@@ -1,0 +1,107 @@
+.section {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.inner {
+  border-top: 2px solid var(--color-divider);
+  padding: 96px 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+}
+.copyCol {
+  grid-column: span 5;
+}
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.heading {
+  font-size: clamp(36px, 4.4vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  margin: 20px 0 0;
+  max-width: 12ch;
+}
+.lede {
+  margin: 24px 0 0;
+  max-width: 40ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--color-text) 75%, transparent);
+}
+.rows {
+  margin-top: 40px;
+  border-top: 2px solid var(--color-divider);
+}
+.row {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 15px;
+}
+.rows > .row:last-child {
+  border-bottom: none;
+}
+.rowLabel {
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+.formCol {
+  grid-column: span 7;
+  border: 2px solid var(--color-divider);
+  padding: 40px;
+}
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.messageField {
+  margin-top: 24px;
+}
+.formFooter {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 2px solid var(--color-divider);
+  padding-top: 24px;
+  flex-wrap: wrap;
+}
+.footerNote {
+  font-size: 13px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  max-width: 38ch;
+}
+.errorText {
+  color: var(--color-accent-700);
+  font-size: 12px;
+  margin-top: 4px;
+}
+.statusMessage {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--color-accent-700);
+  border-top: 1px solid var(--color-divider);
+  padding-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .section { padding: 0 20px; }
+  .inner { padding: 64px 0; }
+  .grid { grid-template-columns: 1fr; gap: 40px; }
+  .copyCol, .formCol { grid-column: 1; }
+  .formCol { padding: 24px; }
+  .formGrid { grid-template-columns: 1fr; gap: 20px; }
+  .formFooter { flex-direction: column; align-items: stretch; }
+}

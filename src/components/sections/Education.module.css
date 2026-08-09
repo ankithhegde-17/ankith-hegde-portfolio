@@ -1,0 +1,64 @@
+.section {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.inner {
+  border-top: 2px solid var(--color-divider);
+  padding: 88px 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+}
+.kickerCol {
+  grid-column: span 3;
+}
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.contentCol {
+  grid-column: span 9;
+}
+.row {
+  display: grid;
+  grid-template-columns: 140px 1fr 260px;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 2px solid var(--color-divider);
+  border-bottom: 2px solid var(--color-divider);
+}
+.years {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 15px;
+}
+.degree {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.detail {
+  font-size: 15px;
+  margin-top: 6px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.institution {
+  font-size: 14px;
+  text-align: right;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+
+@media (max-width: 900px) {
+  .section { padding: 0 20px; }
+  .inner { padding: 64px 0; }
+  .grid { grid-template-columns: 1fr; gap: 24px; }
+  .kickerCol, .contentCol { grid-column: 1; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  .institution { text-align: left; }
+}

@@ -1,0 +1,116 @@
+.headerText {
+  min-width: 0;
+}
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 34px;
+  letter-spacing: -0.03em;
+  margin-top: 8px;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 32px 28px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.row:first-child {
+  padding-top: 0;
+}
+.row.noBorder {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rowLabel {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.rowText {
+  font-size: 16px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
+}
+
+.quote {
+  margin-top: 18px;
+  padding-left: 20px;
+  border-left: 2px solid var(--color-accent);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bulletRow {
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 16px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
+}
+.bulletMark {
+  color: var(--color-accent);
+  flex: none;
+}
+
+.detailRow {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.pillarRow {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.detailName {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 16px;
+}
+.detailText {
+  font-size: 15px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+
+@media (max-width: 720px) {
+  .body { padding: 24px 20px; }
+  .title { font-size: 26px; }
+  .row, .detailRow, .pillarRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-b8623417-7277-4338-a147-3654fb25e4f9/styles.css">
+<script src="_ds/modernist-b8623417-7277-4338-a147-3654fb25e4f9/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+body { margin: 0; }
+a { color: var(--color-accent); text-decoration: none; }
+a:hover { color: var(--color-accent-600); }
+@keyframes drift { from { transform: translateY(10px); opacity: 0 } to { transform: none; opacity: 1 } }
+</style>
+</helmet>
+<div style="{{ themeVars }}">
+<div style="background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);min-height:100vh">
+
+<header style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:baseline;gap:12px">
+      <span style="font-family:var(--font-heading);font-weight:800;font-size:16px;letter-spacing:-.02em">Portfolio — Design System</span>
+      <span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 50%,transparent)">v0.1 · Phase 1</span>
+    </div>
+    <button onClick="{{ toggleTheme }}" class="btn btn-secondary" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">{{ themeLabel }}</button>
+  </div>
+</header>
+
+<main style="max-width:1240px;margin:0 auto;padding:0 40px">
+
+  <section style="padding:72px 0 56px">
+    <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">Foundations</div>
+    <h1 style="font-size:clamp(40px,6vw,80px);line-height:.94;letter-spacing:-.04em;margin:20px 0 0;max-width:16ch">The rules the portfolio is built from.</h1>
+    <p style="margin:24px 0 0;max-width:58ch;font-size:18px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 75%,transparent)">One typeface, one accent, a visible grid and no rounded corners. Everything below works identically in light and dark — switch the toggle above to check.</p>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);padding:56px 0">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">01 — Typography</div>
+      <div>
+        <p style="margin:0 0 32px;max-width:58ch;font-size:16px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Archivo throughout. Display sizes at weight 800 and −0.03 to −0.04em tracking; body at 400 and normal tracking. Grotesque, structural, no personality tax.</p>
+        <div style="border-top:1px solid var(--color-divider);padding:20px 0;display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:baseline">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Display · 108/0.9 · 800</div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:72px;line-height:.9;letter-spacing:-.04em">Ankith Hegde</div>
+        </div>
+        <div style="border-top:1px solid var(--color-divider);padding:20px 0;display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:baseline">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">H2 · 48/1.05 · 800</div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:48px;line-height:1.05;letter-spacing:-.03em">Three flagship projects</div>
+        </div>
+        <div style="border-top:1px solid var(--color-divider);padding:20px 0;display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:baseline">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">H3 · 40/1.02 · 800</div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:40px;line-height:1.02;letter-spacing:-.03em">DiscoverBuddy</div>
+        </div>
+        <div style="border-top:1px solid var(--color-divider);padding:20px 0;display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:baseline">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Lead · 18/1.6 · 400</div>
+          <div style="font-size:18px;line-height:1.6;max-width:52ch">Building digital products where engineering meets thoughtful design — through continuous learning, product thinking and attention to detail.</div>
+        </div>
+        <div style="border-top:1px solid var(--color-divider);padding:20px 0;display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:baseline">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Body · 16/1.65 · 400</div>
+          <div style="font-size:16px;line-height:1.65;max-width:60ch">Body copy sits at 65–70% text opacity so headings hold the hierarchy without needing a second colour.</div>
+        </div>
+        <div style="border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);padding:20px 0;display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:baseline">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Label · 12/0.14em · 700</div>
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">04 — Featured Projects</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);padding:56px 0">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">02 — Colour</div>
+      <div>
+        <p style="margin:0 0 28px;max-width:58ch;font-size:16px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Ink on ground plus one red. Red is reserved for the primary action, the active state, timeline milestones and the single poster section. Nothing else gets colour.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:32px">
+          <div style="border:2px solid var(--color-divider)">
+            <div style="padding:14px 16px;border-bottom:2px solid var(--color-divider);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700">Light</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr)">
+              <div style="height:88px;background:#f3f2f2"></div>
+              <div style="height:88px;background:#eae9e9"></div>
+              <div style="height:88px;background:#201e1d"></div>
+              <div style="height:88px;background:#ec3013"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);font-size:11px;letter-spacing:.04em;border-top:1px solid var(--color-divider)">
+              <div style="padding:10px 8px;border-right:1px solid var(--color-divider)">bg<br>#f3f2f2</div>
+              <div style="padding:10px 8px;border-right:1px solid var(--color-divider)">surface<br>#eae9e9</div>
+              <div style="padding:10px 8px;border-right:1px solid var(--color-divider)">text<br>#201e1d</div>
+              <div style="padding:10px 8px">accent<br>#ec3013</div>
+            </div>
+          </div>
+          <div style="border:2px solid var(--color-divider)">
+            <div style="padding:14px 16px;border-bottom:2px solid var(--color-divider);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700">Dark</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr)">
+              <div style="height:88px;background:#141211"></div>
+              <div style="height:88px;background:#1c1a19"></div>
+              <div style="height:88px;background:#f2efee"></div>
+              <div style="height:88px;background:#ff563c"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);font-size:11px;letter-spacing:.04em;border-top:1px solid var(--color-divider)">
+              <div style="padding:10px 8px;border-right:1px solid var(--color-divider)">bg<br>#141211</div>
+              <div style="padding:10px 8px;border-right:1px solid var(--color-divider)">surface<br>#1c1a19</div>
+              <div style="padding:10px 8px;border-right:1px solid var(--color-divider)">text<br>#f2efee</div>
+              <div style="padding:10px 8px">accent<br>#ff563c</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:20px;font-size:14px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 65%,transparent);max-width:70ch">Dark mode lifts the accent one ramp step (#ec3013 → #ff563c) to hold contrast on ink, and dividers switch to 32% white. Everything else is the same token, re-valued — no separate dark design.</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);padding:56px 0">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">03 — Spacing &amp; Grid</div>
+      <div>
+        <div style="display:flex;align-items:flex-end;gap:12px;margin-bottom:28px">
+          <div style="width:4px;height:4px;background:var(--color-accent)"></div>
+          <div style="width:8px;height:8px;background:var(--color-accent)"></div>
+          <div style="width:12px;height:12px;background:var(--color-accent)"></div>
+          <div style="width:16px;height:16px;background:var(--color-accent)"></div>
+          <div style="width:24px;height:24px;background:var(--color-accent)"></div>
+          <div style="width:32px;height:32px;background:var(--color-accent)"></div>
+          <div style="width:56px;height:56px;background:var(--color-accent)"></div>
+          <div style="width:88px;height:88px;background:var(--color-accent)"></div>
+        </div>
+        <div style="font-size:14px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 70%,transparent);max-width:70ch;margin-bottom:32px">4 · 8 · 12 · 16 · 24 · 32 · 56 · 88. Section rhythm is 88px vertical on desktop, 56px on mobile. Nothing sits at an unlisted value.</div>
+        <div style="border:2px solid var(--color-divider);padding:16px">
+          <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px;height:120px">
+            <div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div><div style="background:color-mix(in srgb,var(--color-accent) 18%,transparent)"></div>
+          </div>
+        </div>
+        <div style="margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-size:14px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 70%,transparent)">
+          <div><strong style="color:var(--color-text)">Desktop</strong><br>12 columns · 32px gutter · 1360px max · 40px margin</div>
+          <div><strong style="color:var(--color-text)">Tablet</strong><br>8 columns · 24px gutter · 32px margin</div>
+          <div><strong style="color:var(--color-text)">Mobile</strong><br>4 columns · 16px gutter · 20px margin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);padding:56px 0">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">04 — Borders &amp; Radius</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+        <div>
+          <div style="height:88px;border:2px solid var(--color-divider)"></div>
+          <div style="margin-top:10px;font-size:14px;line-height:1.5"><strong>2px — structure</strong><br><span style="color:color-mix(in srgb,var(--color-text) 65%,transparent)">Section rules, card frames, image frames.</span></div>
+        </div>
+        <div>
+          <div style="height:88px;border:1px solid var(--color-divider)"></div>
+          <div style="margin-top:10px;font-size:14px;line-height:1.5"><strong>1px — subdivision</strong><br><span style="color:color-mix(in srgb,var(--color-text) 65%,transparent)">Rows inside a section, table lines.</span></div>
+        </div>
+        <div>
+          <div style="height:88px;border:2px solid var(--color-accent)"></div>
+          <div style="margin-top:10px;font-size:14px;line-height:1.5"><strong>0px radius, always</strong><br><span style="color:color-mix(in srgb,var(--color-text) 65%,transparent)">No rounding anywhere. Accent border marks focus and active fields.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);padding:56px 0">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">05 — Buttons &amp; Links</div>
+      <div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+          <button class="btn btn-primary" style="height:48px;padding:0 22px;font-size:14px">View Projects</button>
+          <button class="btn btn-secondary" style="height:48px;padding:0 22px;font-size:14px">Download Resume</button>
+          <button class="btn btn-ghost" style="height:48px;font-size:14px">Read case study</button>
+          <button class="btn btn-primary" style="height:48px;padding:0 22px;font-size:14px" disabled="">Sending…</button>
+          <a href="#" style="color:var(--color-text);border-bottom:2px solid var(--color-accent);padding-bottom:3px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">Underline link</a>
+        </div>
+        <div style="margin-top:20px;font-size:14px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 70%,transparent);max-width:70ch">48px tall, labels flush left in wide buttons, no icon unless it carries meaning. Hover moves one ramp step darker; focus is the 2px accent ring at 2px offset. Text links use a 2px rule under the label that goes accent on hover — never a colour-only change.</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);padding:56px 0">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">06 — Cards &amp; Nav</div>
+      <div>
+        <div style="border-top:2px solid var(--color-divider);display:grid;grid-template-columns:1fr 1fr">
+          <div style="padding:24px 24px 24px 0;border-right:2px solid var(--color-divider)">
+            <div style="display:flex;gap:14px;align-items:baseline"><span style="font-weight:800;font-size:14px;color:var(--color-accent)">01</span><span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Platform</span></div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:28px;letter-spacing:-.03em;margin-top:10px">Project entry</div>
+            <div style="font-size:15px;margin-top:8px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Not a card — a ruled row on the page grid. The image spans 7 columns, the text 5, and the pair alternates sides down the section.</div>
+          </div>
+          <div style="padding:24px">
+            <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Nav</div>
+            <div style="margin-top:12px;border:2px solid var(--color-divider);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+              <span style="font-family:var(--font-heading);font-weight:800;font-size:14px">Ankith Hegde</span>
+              <span style="display:flex;gap:18px;font-size:13px"><span>Work</span><span>About</span><span style="border-bottom:2px solid var(--color-accent)">Contact</span></span>
+            </div>
+            <div style="font-size:14px;margin-top:12px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Sticky, 64px, one 2px rule underneath. No shadow, no blur, no shrink-on-scroll.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);padding:56px 0">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">07 — Forms</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start">
+        <div class="field">
+          <label style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Default</label>
+          <input class="input" placeholder="Your name" style="height:48px">
+        </div>
+        <div class="field">
+          <label style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Focused</label>
+          <input class="input" value="you@company.com" style="height:48px;border:2px solid var(--color-accent)" readonly="">
+        </div>
+        <div class="field">
+          <label style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Error</label>
+          <input class="input" value="not-an-email" style="height:48px;border:2px solid var(--color-accent-700)" readonly="">
+          <div style="font-size:13px;margin-top:6px;color:var(--color-accent-700)">Enter a valid email address.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);padding:56px 0">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">08 — Icons</div>
+      <div>
+        <div style="display:flex;gap:28px;align-items:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16"></rect><path d="m2 7 10 6 10-6"></path></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="m7 10 5 5 5-5"></path><path d="M3 21h18"></path></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+          <span style="font-size:14px;color:color-mix(in srgb,var(--color-text) 70%,transparent);max-width:46ch;line-height:1.6">Lucide, 22px, 1.75 stroke, currentColor. Icons appear only where a word would be slower — never as decoration beside a heading.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);padding:56px 0">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">09 — Motion</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:32px">
+        <div style="font-size:16px;line-height:1.7">
+          <div style="padding-bottom:14px;border-bottom:1px solid var(--color-divider)"><strong>Entrance</strong> — 12px rise + fade, 700ms, cubic-bezier(.22,.61,.36,1), staggered 60ms. Once per element, on first view only.</div>
+          <div style="padding:14px 0;border-bottom:1px solid var(--color-divider)"><strong>State</strong> — 150ms on hover and focus. Colour and rule weight only; nothing moves.</div>
+          <div style="padding:14px 0;border-bottom:1px solid var(--color-divider)"><strong>Loading</strong> — a single red rule filling left to right, then a 260ms cut to the page. No spinner.</div>
+          <div style="padding-top:14px"><strong>Never</strong> — parallax, scroll-jacking, counters, letter-by-letter reveals, anything that repeats on scroll up. <code>prefers-reduced-motion</code> disables all of it.</div>
+        </div>
+        <div style="border:2px solid var(--color-divider);padding:24px;display:flex;flex-direction:column;justify-content:center;gap:20px">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Entrance, replayed</div>
+          <div key="{{ replayKey }}" style="animation:drift .7s cubic-bezier(.22,.61,.36,1) both;font-family:var(--font-heading);font-weight:800;font-size:36px;letter-spacing:-.03em;line-height:1.05">Beautifully designed,<br>genuinely useful.</div>
+          <button onClick="{{ replay }}" class="btn btn-secondary" style="width:max-content;font-size:12px;letter-spacing:.1em;text-transform:uppercase">Replay</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding:40px 0 72px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 50%,transparent)">Design system — phase 1 · Ankith Hegde portfolio</div>
+</main>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { theme: "light", replayKey: 0 };
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    return {
+      themeVars: dark
+        ? {
+            "--color-bg": "#141211",
+            "--color-surface": "#1c1a19",
+            "--color-text": "#f2efee",
+            "--color-accent": "#ff563c",
+            "--color-accent-600": "#ff7a64",
+            "--color-accent-700": "#ffb0a0",
+            "--color-divider": "color-mix(in srgb, #f2efee 32%, transparent)",
+          }
+        : {},
+      themeLabel: dark ? "Light" : "Dark",
+      toggleTheme: () => this.setState((s) => ({ theme: s.theme === "dark" ? "light" : "dark" })),
+      replayKey: this.state.replayKey,
+      replay: () => this.setState((s) => ({ replayKey: s.replayKey + 1 })),
+    };
+  }
+}
+</script>
+</body>
+</html>

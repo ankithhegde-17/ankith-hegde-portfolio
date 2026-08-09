@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-b8623417-7277-4338-a147-3654fb25e4f9/styles.css">
+<script src="_ds/modernist-b8623417-7277-4338-a147-3654fb25e4f9/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+@keyframes blink { 0%,100% { opacity: 1 } 50% { opacity: .25 } }
+@keyframes certIn { from { opacity: 0 } to { opacity: 1 } }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 104px; }
+@media (max-width: 820px) {
+  [data-nav-links] { display: none !important; }
+  [data-nav-toggle] { display: inline-flex !important; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@keyframes certUp { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
+a { color: var(--color-accent); text-decoration: none; }
+a:hover { color: var(--color-accent-600); }
+body { margin: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  body, body * { transition: background-color .38s ease-in-out, border-color .38s ease-in-out, color .38s ease-in-out, fill .38s ease-in-out; }
+}
+</style>
+</helmet>
+<div style="{{ themeVars }}">
+<div style="background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;padding-top:88px">
+
+<sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:200;background:#181818;color:#f2f2f2;display:grid;grid-template-rows:1fr auto;padding:40px">
+    <div style="display:flex;align-items:flex-end">
+      <div>
+        <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8b8785">Portfolio — 2026</div>
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(48px,9vw,120px);line-height:.92;letter-spacing:-.035em;margin-top:16px">Ankith Hegde</div>
+      </div>
+    </div>
+    <div>
+      <div style="height:2px;background:rgba(243,242,242,.22);position:relative;margin-bottom:16px">
+        <div style="position:absolute;inset:0;background:var(--color-accent);transform-origin:left;width:{{ pct }}%"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#8b8785">
+        <span>Loading</span>
+        <span>{{ pct }}</span>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ cert }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeCert }}" style="position:fixed;inset:0;z-index:180;background:rgba(18,18,18,.68);display:flex;align-items:center;justify-content:center;padding:32px;animation:certIn .18s ease-out both">
+    <div onClick="{{ stop }}" style="background:var(--color-bg);border:2px solid var(--color-text);width:min(1040px,100%);max-height:100%;display:flex;flex-direction:column;animation:certUp .24s cubic-bezier(.22,.61,.36,1) both">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:24px 28px;border-bottom:2px solid var(--color-divider)">
+        <div>
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">{{ cert.type }}</div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:26px;letter-spacing:-.025em;margin-top:8px">{{ cert.title }}</div>
+          <div style="font-size:15px;margin-top:4px;color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ cert.meta }}</div>
+        </div>
+        <button onClick="{{ closeCert }}" aria-label="Close certificate" style="appearance:none;background:transparent;border:1px solid var(--color-divider);width:40px;height:40px;flex:none;cursor:pointer;color:var(--color-text);font-size:18px;line-height:1">✕</button>
+      </div>
+      <div style="flex:1;min-height:240px;background:var(--color-surface);padding:20px;overflow:auto;display:flex;align-items:center;justify-content:center">
+        <sc-if value="{{ cert.hasPreviewImage }}" hint-placeholder-val="{{ false }}">
+          <div style="height:100%;display:flex;align-items:center;justify-content:center">{{ cert.previewEl }}</div>
+        </sc-if>
+        <sc-if value="{{ cert.showPlaceholder }}" hint-placeholder-val="{{ true }}">
+          <div style="aspect-ratio:297/210;height:100%;max-height:100%;max-width:100%;margin:0 auto;border:1px solid var(--color-divider);background:var(--color-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:32px">
+            <div style="width:56px;height:2px;background:var(--color-accent)"></div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:20px;letter-spacing:-.02em;max-width:24ch">{{ cert.title }}</div>
+            <div style="font-size:14px;line-height:1.6;max-width:40ch;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Certificate preview image goes here. Open or download the PDF below for the full document.</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ cert.pending }}" hint-placeholder-val="{{ false }}">
+          <div style="height:min(38vh,320px);border:1px solid var(--color-divider);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:15px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 60%,transparent)">Certificate file not supplied yet.<br>Add the PDF and it will appear here.</div>
+        </sc-if>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 28px;border-top:2px solid var(--color-divider)">
+        <div style="font-size:13px;min-width:0;flex:1 1 120px;color:color-mix(in srgb,var(--color-text) 55%,transparent)">{{ cert.credential }}</div>
+        <div style="display:flex;gap:12px;flex:none">
+          <sc-if value="{{ cert.file }}" hint-placeholder-val="{{ true }}">
+            <a href="{{ cert.file }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="height:44px;padding:0 18px;font-size:13px;white-space:nowrap;flex:none">Open PDF</a>
+          </sc-if>
+          <sc-if value="{{ cert.file }}" hint-placeholder-val="{{ true }}">
+            <a href="{{ cert.file }}" download="" class="btn btn-primary" style="height:44px;padding:0 18px;font-size:13px;white-space:nowrap;flex:none">Download Certificate</a>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ study }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeStudy }}" style="position:fixed;inset:0;z-index:190;background:rgba(18,18,18,.68);display:flex;align-items:center;justify-content:center;padding:32px;animation:certIn .18s ease-out both">
+    <div onClick="{{ stop }}" style="background:var(--color-bg);border:2px solid var(--color-text);width:min(1040px,100%);max-height:100%;display:flex;flex-direction:column;animation:certUp .24s cubic-bezier(.22,.61,.36,1) both">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:24px 28px;border-bottom:2px solid var(--color-divider)">
+        <div>
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">{{ study.meta }}</div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:34px;letter-spacing:-.03em;margin-top:8px">{{ study.title }}</div>
+        </div>
+        <button onClick="{{ closeStudy }}" aria-label="Close case study" style="appearance:none;background:transparent;border:1px solid var(--color-divider);width:40px;height:40px;flex:none;cursor:pointer;color:var(--color-text);font-size:18px;line-height:1">✕</button>
+      </div>
+      <div style="flex:1;min-height:0;overflow:auto;padding:32px 28px">
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;padding-bottom:24px;border-bottom:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700">The problem</div>
+          <div style="font-size:16px;line-height:1.7;color:color-mix(in srgb,var(--color-text) 78%,transparent)">{{ study.problem }}</div>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700">The solution</div>
+          <div>
+            <div style="font-size:16px;line-height:1.7;color:color-mix(in srgb,var(--color-text) 78%,transparent)">{{ study.solution }}</div>
+            <div style="margin-top:18px;padding-left:20px;border-left:2px solid var(--color-accent);font-family:var(--font-heading);font-weight:700;font-size:22px;line-height:1.35;letter-spacing:-.02em">{{ study.quote }}</div>
+            <div style="font-size:16px;line-height:1.7;margin-top:18px;color:color-mix(in srgb,var(--color-text) 78%,transparent)">{{ study.solutionAfter }}</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700">Key features</div>
+          <div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ study.features }}" as="feat" hint-placeholder-count="6">
+                <span class="tag tag-outline" style="white-space:nowrap">{{ feat }}</span>
+              </sc-for>
+            </div>
+            <sc-for list="{{ study.featureBullets }}" as="fb" hint-placeholder-count="0">
+              <div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--color-divider);font-size:16px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 78%,transparent)"><span style="color:var(--color-accent);flex:none">—</span><span>{{ fb }}</span></div>
+            </sc-for>
+            <sc-for list="{{ study.featureRows }}" as="fr" hint-placeholder-count="0">
+              <div style="display:grid;grid-template-columns:220px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider)">
+                <div style="font-family:var(--font-heading);font-weight:800;font-size:16px">{{ fr.name }}</div>
+                <div style="font-size:15px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ fr.text }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700">My role</div>
+          <div style="font-size:16px;line-height:1.7;color:color-mix(in srgb,var(--color-text) 78%,transparent)">{{ study.role }}</div>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700">Challenge</div>
+          <div style="font-size:16px;line-height:1.7;color:color-mix(in srgb,var(--color-text) 78%,transparent)">{{ study.challenge }}</div>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700">Approach</div>
+          <div>
+            <div style="font-size:16px;line-height:1.7;color:color-mix(in srgb,var(--color-text) 78%,transparent)">{{ study.approach }}</div>
+            <sc-for list="{{ study.pillars }}" as="p" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider)">
+                <div style="font-family:var(--font-heading);font-weight:800;font-size:16px">{{ p.name }}</div>
+                <div style="font-size:15px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ p.text }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px 0 0">
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700">Outcome</div>
+          <div style="font-size:16px;line-height:1.7;color:color-mix(in srgb,var(--color-text) 78%,transparent)">{{ study.outcome }}</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 28px;border-top:2px solid var(--color-divider)">
+        <div style="font-size:13px;min-width:0;flex:1 1 120px;color:color-mix(in srgb,var(--color-text) 55%,transparent)">{{ study.stack }}</div>
+        <button onClick="{{ closeStudy }}" class="btn btn-secondary" style="height:44px;padding:0 18px;font-size:13px;white-space:nowrap;flex:none">Close</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ gallery }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeGallery }}" style="position:fixed;inset:0;z-index:190;background:rgba(18,18,18,.68);display:flex;align-items:center;justify-content:center;padding:32px;animation:certIn .18s ease-out both">
+    <div onClick="{{ stop }}" style="background:var(--color-bg);border:2px solid var(--color-text);width:min(1040px,100%);max-height:100%;display:flex;flex-direction:column;animation:certUp .24s cubic-bezier(.22,.61,.36,1) both">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:24px 28px;border-bottom:2px solid var(--color-divider)">
+        <div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:30px;letter-spacing:-.03em">{{ gallery.title }}</div>
+          <div style="font-size:15px;margin-top:6px;color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ gallery.description }}</div>
+        </div>
+        <button onClick="{{ closeGallery }}" aria-label="Close gallery" style="appearance:none;background:transparent;border:1px solid var(--color-divider);width:40px;height:40px;flex:none;cursor:pointer;color:var(--color-text);font-size:18px;line-height:1">✕</button>
+      </div>
+      <div style="flex:1;min-height:240px;overflow:auto;padding:24px 28px 28px">
+        <div>{{ gallery.leadEl }}</div>
+        <div style="margin-top:16px">{{ gallery.thumbEls }}</div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<header data-screen-label="Nav" style="position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;pointer-events:none">
+  <div style="max-width:1360px;margin:0 auto;pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;height:60px;padding:0 20px;background:color-mix(in srgb,var(--color-bg) 74%,transparent);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);border:1px solid var(--color-divider);box-shadow:var(--shadow-sm)">
+    <a href="#home" data-nav="home" style="display:flex;align-items:baseline;gap:12px;color:var(--color-text)">
+      <span style="font-family:var(--font-heading);font-weight:800;font-size:16px;letter-spacing:-.02em">Ankith Hegde</span>
+      <span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 50%,transparent)">AI &amp; Data Science</span>
+    </a>
+    <nav aria-label="Primary" style="display:flex;align-items:center;gap:8px">
+      <div data-nav-links="" style="display:flex;align-items:center;gap:4px">
+        <a href="#home" data-nav="home" style="padding:8px 12px;font-size:13px;letter-spacing:.03em;color:var(--color-text);border-bottom:2px solid transparent;transition:color .15s,border-color .15s,background .15s" style-hover="background:color-mix(in srgb,var(--color-text) 6%,transparent)">Home</a>
+        <a href="#about" data-nav="about" style="padding:8px 12px;font-size:13px;letter-spacing:.03em;color:var(--color-text);border-bottom:2px solid transparent;transition:color .15s,border-color .15s,background .15s" style-hover="background:color-mix(in srgb,var(--color-text) 6%,transparent)">About</a>
+        <a href="#work" data-nav="work" style="padding:8px 12px;font-size:13px;letter-spacing:.03em;color:var(--color-text);border-bottom:2px solid transparent;transition:color .15s,border-color .15s,background .15s" style-hover="background:color-mix(in srgb,var(--color-text) 6%,transparent)">Work</a>
+        <a href="#journey" data-nav="journey" style="padding:8px 12px;font-size:13px;letter-spacing:.03em;color:var(--color-text);border-bottom:2px solid transparent;transition:color .15s,border-color .15s,background .15s" style-hover="background:color-mix(in srgb,var(--color-text) 6%,transparent)">Journey</a>
+        <a href="#contact" data-nav="contact" style="padding:8px 12px;font-size:13px;letter-spacing:.03em;color:var(--color-text);border-bottom:2px solid transparent;transition:color .15s,border-color .15s,background .15s" style-hover="background:color-mix(in srgb,var(--color-text) 6%,transparent)">Contact</a>
+      </div>
+      <button onClick="{{ toggleTheme }}" class="btn btn-secondary" style="margin-left:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase">{{ themeLabel }}</button>
+      <button data-nav-toggle="" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="display:none;appearance:none;background:transparent;border:1px solid var(--color-divider);width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer;color:var(--color-text)">
+        <span style="display:flex;flex-direction:column;gap:5px"><span style="width:18px;height:2px;background:currentColor;display:block"></span><span style="width:18px;height:2px;background:currentColor;display:block"></span></span>
+      </button>
+    </nav>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="pointer-events:auto;max-width:1360px;margin:8px auto 0;background:color-mix(in srgb,var(--color-bg) 92%,transparent);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);border:1px solid var(--color-divider);box-shadow:var(--shadow-sm);display:flex;flex-direction:column">
+      <a href="#home" onClick="{{ closeMenu }}" style="padding:16px 20px;border-bottom:1px solid var(--color-divider);font-family:var(--font-heading);font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--color-text)">Home</a>
+      <a href="#about" onClick="{{ closeMenu }}" style="padding:16px 20px;border-bottom:1px solid var(--color-divider);font-family:var(--font-heading);font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--color-text)">About</a>
+      <a href="#work" onClick="{{ closeMenu }}" style="padding:16px 20px;border-bottom:1px solid var(--color-divider);font-family:var(--font-heading);font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--color-text)">Work</a>
+      <a href="#journey" onClick="{{ closeMenu }}" style="padding:16px 20px;border-bottom:1px solid var(--color-divider);font-family:var(--font-heading);font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--color-text)">Journey</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="padding:16px 20px;font-family:var(--font-heading);font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--color-text)">Contact</a>
+    </div>
+  </sc-if>
+</header>
+
+<section id="home" data-screen-label="Hero" style="max-width:1360px;margin:0 auto;padding:0 40px">
+  <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px;padding:88px 0 56px">
+    <div style="grid-column:span 7;display:flex;flex-direction:column;justify-content:center">
+      <div data-reveal="" style="display:inline-flex;align-items:center;gap:10px;border:1px solid var(--color-divider);padding:6px 12px;width:max-content;font-size:12px;letter-spacing:.1em;text-transform:uppercase">
+        <span style="width:7px;height:7px;background:var(--color-accent);animation:blink 2.4s infinite"></span>
+        Open to internships &amp; collaborations
+      </div>
+      <div data-reveal="" style="margin-top:36px;font-size:15px;letter-spacing:.02em;color:color-mix(in srgb,var(--color-text) 60%,transparent)">Hello, I'm</div>
+      <h1 data-reveal="" style="font-size:clamp(56px,7.4vw,108px);line-height:.9;letter-spacing:-.04em;margin:8px 0 0">Ankith<br>Hegde</h1>
+      <div data-reveal="" style="margin-top:28px;display:flex;align-items:flex-start;gap:16px">
+        <span style="width:48px;height:2px;background:var(--color-accent);margin-top:13px;flex:none"></span>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:21px;line-height:1.35;letter-spacing:-.01em">
+          AI &amp; Data Science Engineering Student
+          <div style="font-weight:500;color:color-mix(in srgb,var(--color-text) 62%,transparent)">Product Builder • Design Enthusiast</div>
+        </div>
+      </div>
+      <p data-reveal="" style="margin:24px 0 0;max-width:52ch;font-size:18px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 78%,transparent)">Building digital products where engineering, thoughtful design, and real-world impact come together.</p>
+      <div data-reveal="" style="margin-top:36px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#work" class="btn btn-primary" style="height:48px;padding:0 22px;font-size:14px;letter-spacing:.02em">View Projects</a>
+        <a href="#" class="btn btn-secondary" style="height:48px;padding:0 22px;font-size:14px;letter-spacing:.02em">Download Resume</a>
+      </div>
+      <div data-reveal="" style="margin-top:32px;display:flex;gap:28px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">
+        <a href="https://github.com/ankithhegde-17" target="_blank" rel="noopener noreferrer" style="color:var(--color-text);border-bottom:2px solid var(--color-divider);padding-bottom:3px">GitHub</a>
+        <a href="https://www.linkedin.com/in/hegdeankith/" target="_blank" rel="noopener noreferrer" style="color:var(--color-text);border-bottom:2px solid var(--color-divider);padding-bottom:3px">LinkedIn</a>
+        <a href="mailto:ankithhegde001@gmail.com" style="color:var(--color-text);border-bottom:2px solid var(--color-divider);padding-bottom:3px">Email</a>
+      </div>
+    </div>
+    <div style="grid-column:span 5;display:flex;flex-direction:column">
+      <div class="grayscale" style="position:relative;width:100%;aspect-ratio:4/5;border:2px solid var(--color-divider)">
+        <img src="assets/ankith-portrait.png" alt="Portrait of Ankith Hegde" width="1240" height="1550" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%">
+      </div>
+    </div>
+  </div>
+  <div style="border-top:2px solid var(--color-divider);display:grid;grid-template-columns:repeat(4,1fr)">
+    <div style="padding:24px 24px 24px 0;border-right:2px solid var(--color-divider)">
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:32px;letter-spacing:-.02em">3rd year</div>
+      <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent);margin-top:4px">B.E. AI &amp; Data Science</div>
+    </div>
+    <div style="padding:24px;border-right:2px solid var(--color-divider)">
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:32px;letter-spacing:-.02em">Mysuru</div>
+      <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent);margin-top:4px">Karnataka, India</div>
+    </div>
+    <div style="padding:24px;border-right:2px solid var(--color-divider)">
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:32px;letter-spacing:-.02em">Build + design</div>
+      <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent);margin-top:4px">Where I work</div>
+    </div>
+    <div style="padding:24px 0 24px 24px">
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:32px;letter-spacing:-.02em">Open</div>
+      <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent);margin-top:4px">Internships &amp; collaborations</div>
+    </div>
+  </div>
+</section>
+
+<section id="about" data-screen-label="About" style="max-width:1360px;margin:0 auto;padding:0 40px">
+  <div style="border-top:2px solid var(--color-divider);display:grid;grid-template-columns:repeat(12,1fr);gap:32px;padding:88px 0">
+    <div style="grid-column:span 3">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">01 — About</div>
+    </div>
+    <div style="grid-column:span 6">
+      <p data-reveal="" style="margin:0;font-family:var(--font-heading);font-weight:700;font-size:30px;line-height:1.3;letter-spacing:-.02em">“How can this be both beautifully designed and genuinely useful?”</p>
+      <p data-reveal="" style="margin:28px 0 0;font-size:17px;line-height:1.7;color:color-mix(in srgb,var(--color-text) 78%,transparent)">I'm a 3rd-year AI &amp; Data Science engineering student at Maharaja Institute of Technology Mysuru, passionate about building digital products where engineering meets thoughtful design.</p>
+      <p data-reveal="" style="margin:16px 0 0;font-size:17px;line-height:1.7;color:color-mix(in srgb,var(--color-text) 78%,transparent)">I enjoy transforming ideas into intuitive, meaningful experiences through continuous learning, product thinking, and attention to detail. Every product I build begins with one question — the one above.</p>
+    </div>
+    <div style="grid-column:span 3;display:flex;flex-direction:column;gap:0;border-left:2px solid var(--color-divider);padding-left:24px">
+      <div style="padding-bottom:16px;border-bottom:1px solid var(--color-divider)">
+        <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Focus</div>
+        <div style="font-size:15px;margin-top:4px">AI &amp; Data Science, product engineering, design</div>
+      </div>
+      <div style="padding:16px 0;border-bottom:1px solid var(--color-divider)">
+        <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Based in</div>
+        <div style="font-size:15px;margin-top:4px">Mysuru, Karnataka, India</div>
+      </div>
+      <div style="padding:16px 0">
+        <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Availability</div>
+        <div style="font-size:15px;margin-top:4px">Open to internships &amp; collaborations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Education" style="max-width:1360px;margin:0 auto;padding:0 40px">
+  <div style="border-top:2px solid var(--color-divider);padding:88px 0">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px">
+      <div style="grid-column:span 3"><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">02 — Education</div></div>
+      <div style="grid-column:span 9">
+        <div style="display:grid;grid-template-columns:140px 1fr 260px;gap:24px;padding:24px 0;border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider)">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:15px">2024 —</div>
+          <div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:22px;letter-spacing:-.02em">Bachelor of Engineering, Artificial Intelligence &amp; Data Science</div>
+            <div style="font-size:15px;margin-top:6px;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Currently in the third year.</div>
+          </div>
+          <div style="font-size:14px;text-align:right;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Maharaja Institute of Technology<br>Mysuru</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Skills" style="max-width:1360px;margin:0 auto;padding:0 40px">
+  <div style="border-top:2px solid var(--color-divider);padding:88px 0">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px">
+      <div style="grid-column:span 3"><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">03 — Skills &amp; Technologies</div></div>
+      <div style="grid-column:span 9;display:grid;grid-template-columns:repeat(2,1fr);border-top:2px solid var(--color-divider);border-left:1px solid var(--color-divider)">
+        <div style="padding:24px;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Frontend</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+            <span class="tag tag-outline" style="white-space:nowrap">React</span><span class="tag tag-outline" style="white-space:nowrap">Next.js</span><span class="tag tag-outline" style="white-space:nowrap">HTML</span><span class="tag tag-outline" style="white-space:nowrap">CSS</span><span class="tag tag-outline" style="white-space:nowrap">JavaScript</span><span class="tag tag-outline" style="white-space:nowrap">Tailwind CSS</span>
+          </div>
+        </div>
+        <div style="padding:24px;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Backend</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+            <span class="tag tag-outline" style="white-space:nowrap">Node.js</span><span class="tag tag-outline" style="white-space:nowrap">Firebase</span><span class="tag tag-outline" style="white-space:nowrap">Supabase</span>
+          </div>
+        </div>
+        <div style="padding:24px;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">AI &amp; Cloud</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+            <span class="tag tag-outline" style="white-space:nowrap">Python</span><span class="tag tag-outline" style="white-space:nowrap">Google Cloud</span><span class="tag tag-outline" style="white-space:nowrap">TensorFlow</span>
+          </div>
+        </div>
+        <div style="padding:24px;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Design</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+            <span class="tag tag-outline" style="white-space:nowrap">Figma</span><span class="tag tag-outline" style="white-space:nowrap">Canva</span>
+          </div>
+        </div>
+        <div style="padding:24px;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Developer Tools</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+            <span class="tag tag-outline" style="white-space:nowrap">Git</span><span class="tag tag-outline" style="white-space:nowrap">GitHub</span><span class="tag tag-outline" style="white-space:nowrap">VS Code</span>
+          </div>
+        </div>
+        <div style="padding:24px;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">AI Productivity</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+            <span class="tag tag-outline" style="white-space:nowrap">ChatGPT</span><span class="tag tag-outline" style="white-space:nowrap">Claude</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" data-screen-label="Featured Projects" style="max-width:1360px;margin:0 auto;padding:0 40px">
+  <div style="border-top:2px solid var(--color-divider);padding:88px 0 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:56px">
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">04 — Featured Projects</div>
+        <h2 style="font-size:clamp(36px,4.4vw,60px);line-height:1;letter-spacing:-.03em;margin:20px 0 0;max-width:16ch">Three flagship projects.</h2>
+      </div>
+    </div>
+
+    <article data-reveal="" style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px;padding:48px 0;border-top:2px solid var(--color-divider)">
+      <div style="grid-column:span 5;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:baseline;gap:16px">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:15px;color:var(--color-accent)">01</span>
+          <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Personal Life Companion · 2026 · <span style="color:var(--color-accent)">In Development</span></span>
+        </div>
+        <h3 style="font-size:40px;line-height:1.02;letter-spacing:-.03em;margin:16px 0 0">Memoir</h3>
+        <p style="margin:16px 0 0;font-size:17px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 75%,transparent)">An offline-first digital life companion that helps people remember their experiences, reflect on their journey, and grow one day at a time.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
+          <span class="tag tag-neutral" style="white-space:nowrap">React</span><span class="tag tag-neutral" style="white-space:nowrap">TypeScript</span><span class="tag tag-neutral" style="white-space:nowrap">Supabase</span><span class="tag tag-neutral" style="white-space:nowrap">PostgreSQL</span><span class="tag tag-neutral" style="white-space:nowrap">PWA</span>
+        </div>
+        <div style="margin-top:auto;padding-top:32px;border-top:1px solid var(--color-divider);display:flex;align-items:center;gap:24px">
+          <button onClick="{{ openMemoir }}" style="appearance:none;background:transparent;border:0;border-bottom:2px solid var(--color-accent);padding:0 0 3px;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text)">View more</button>
+          <a href="https://github.com/ankithhegde-17/Memoir" target="_blank" rel="noopener noreferrer" style="color:var(--color-text);border-bottom:2px solid var(--color-divider);padding-bottom:3px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">GitHub</a>
+        </div>
+      </div>
+      <div style="grid-column:span 7">
+        <div style="position:relative;width:100%;aspect-ratio:16/10;border:2px solid var(--color-divider);background:var(--color-surface);overflow:hidden">
+          <img src="assets/memoir-cover.png" alt="Memoir project cover" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%">
+        </div>
+      </div>
+    </article>
+
+    <article data-reveal="" style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px;padding:48px 0;border-top:1px solid var(--color-divider)">
+      <div style="grid-column:span 7;order:1">
+        <div style="position:relative;width:100%;aspect-ratio:16/10;border:2px solid var(--color-divider);background:var(--color-surface);overflow:hidden">
+          <img src="assets/discoverbuddy-cover.png" alt="DiscoverBuddy project cover" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%">
+        </div>
+      </div>
+      <div style="grid-column:span 5;order:2;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:baseline;gap:16px">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:15px;color:var(--color-accent)">02</span>
+          <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Platform · 2026 · <span style="color:var(--color-accent)">In Development</span></span>
+        </div>
+        <h3 style="font-size:40px;line-height:1.02;letter-spacing:-.03em;margin:16px 0 0">DiscoverBuddy</h3>
+        <p style="margin:16px 0 0;font-size:17px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 75%,transparent)">A student-led travel platform connecting travelers with local student guides for more authentic, personalized city experiences.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
+          <span class="tag tag-neutral" style="white-space:nowrap">React</span><span class="tag tag-neutral" style="white-space:nowrap">Firebase</span><span class="tag tag-neutral" style="white-space:nowrap">Tailwind CSS</span><span class="tag tag-neutral" style="white-space:nowrap">Mapbox</span><span class="tag tag-neutral" style="white-space:nowrap">Framer Motion</span>
+        </div>
+        <div style="margin-top:auto;padding-top:32px;border-top:1px solid var(--color-divider);display:flex;align-items:center;gap:24px">
+          <button onClick="{{ openDiscoverBuddy }}" style="appearance:none;background:transparent;border:0;border-bottom:2px solid var(--color-accent);padding:0 0 3px;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text)">View more</button>
+          <a href="https://www.discoverbuddy.in/" target="_blank" rel="noopener noreferrer" style="color:var(--color-text);border-bottom:2px solid var(--color-divider);padding-bottom:3px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">Live</a>
+          <a href="https://github.com/ankithhegde-17/discoverbuddy" target="_blank" rel="noopener noreferrer" style="color:var(--color-text);border-bottom:2px solid var(--color-divider);padding-bottom:3px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article data-reveal="" style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px;padding:48px 0;border-top:1px solid var(--color-divider);border-bottom:2px solid var(--color-divider)">
+      <div style="grid-column:span 5;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:baseline;gap:16px">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:15px;color:var(--color-accent)">03</span>
+          <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">AI / IoT · 2026 · <span style="color:var(--color-accent)">Prototype</span></span>
+        </div>
+        <h3 style="font-size:40px;line-height:1.02;letter-spacing:-.03em;margin:16px 0 0">EcoSort</h3>
+        <p style="margin:16px 0 0;font-size:17px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 75%,transparent)">An AI-powered smart waste management ecosystem that uses computer vision, IoT and automation to intelligently segregate waste at source and optimise municipal waste collection.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
+          <span class="tag tag-neutral" style="white-space:nowrap">TensorFlow Lite</span><span class="tag tag-neutral" style="white-space:nowrap">Raspberry Pi</span><span class="tag tag-neutral" style="white-space:nowrap">ESP32-CAM</span><span class="tag tag-neutral" style="white-space:nowrap">IoT</span><span class="tag tag-neutral" style="white-space:nowrap">GPS</span>
+        </div>
+        <div style="margin-top:auto;padding-top:32px;border-top:1px solid var(--color-divider);display:flex;align-items:center;gap:24px">
+          <button onClick="{{ openEcoSort }}" style="appearance:none;background:transparent;border:0;border-bottom:2px solid var(--color-accent);padding:0 0 3px;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text)">View more</button>
+          <span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 40%,transparent);border-bottom:2px solid var(--color-divider);padding-bottom:3px">Live</span>
+          <a href="https://github.com/ankithhegde-17/quicksort" target="_blank" rel="noopener noreferrer" style="color:var(--color-text);border-bottom:2px solid var(--color-divider);padding-bottom:3px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">GitHub</a>
+        </div>
+      </div>
+      <div style="grid-column:span 7">
+        <div style="position:relative;width:100%;aspect-ratio:16/10;border:2px solid var(--color-divider);background:var(--color-surface);overflow:hidden">
+          <img src="assets/ecosort-cover.png" alt="EcoSort project cover" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%">
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="Experience" style="max-width:1360px;margin:0 auto;padding:0 40px">
+  <div style="padding:88px 0">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px">
+      <div style="grid-column:span 3"><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">05 — Experience</div></div>
+      <div style="grid-column:span 9">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:28px 0;border-top:2px solid var(--color-divider)">
+          <div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:24px;letter-spacing:-.02em">Machine Learning &amp; Deep Learning Intern</div>
+            <div style="font-size:14px;margin-top:6px;color:color-mix(in srgb,var(--color-text) 60%,transparent)">AIQuantum Smart Solutions Pvt. Ltd. · 19 Aug — 18 Sept 2025</div>
+          </div>
+          <div style="font-size:16px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 78%,transparent)">Completed an internship focused on Machine Learning and Deep Learning using Python, gaining hands-on experience in building neural networks and predictive models. Also explored image processing and visual data analysis under the guidance of Dr. Shyam Lal, Associate Professor at NIT Surathkal.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:28px 0;border-top:1px solid var(--color-divider)">
+          <div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:24px;letter-spacing:-.02em">Technical Head</div>
+            <div style="font-size:14px;margin-top:6px;color:color-mix(in srgb,var(--color-text) 60%,transparent)">WINGS of MITT Aero Club</div>
+          </div>
+          <div style="font-size:16px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 78%,transparent)">Leadership, technical initiatives, workshops and engineering activities.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:28px 0;border-top:1px solid var(--color-divider)">
+          <div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:24px;letter-spacing:-.02em">Drone Workshop Organizer</div>
+            <div style="font-size:14px;margin-top:6px;color:color-mix(in srgb,var(--color-text) 60%,transparent)">WINGS of MITT Aero Club · 18 December 2025</div>
+          </div>
+          <div style="font-size:16px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 78%,transparent)">Organized the club's drone workshop.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:28px 0;border-top:1px solid var(--color-divider);border-bottom:2px solid var(--color-divider)">
+          <div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:24px;letter-spacing:-.02em">Technical Team Member</div>
+            <div style="font-size:14px;margin-top:6px;color:color-mix(in srgb,var(--color-text) 60%,transparent)">E-Cell MITT</div>
+          </div>
+          <div style="font-size:16px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 78%,transparent)">Technical team of E-Cell MITT.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey" data-screen-label="Journey" style="max-width:1360px;margin:0 auto;padding:0 40px">
+  <div style="border-top:2px solid var(--color-divider);padding:88px 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:48px">
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">06 — Journey of Growth</div>
+        <h2 style="font-size:clamp(32px,3.6vw,48px);line-height:1.05;letter-spacing:-.03em;margin:18px 0 0">Every milestone, in order.</h2>
+      </div>
+      <div style="display:flex;gap:16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">
+        <span style="display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;background:var(--color-accent)"></span>Milestone</span>
+        <span style="display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border:2px solid var(--color-divider)"></span>Step</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px">
+      <div style="grid-column:span 12;border-top:2px solid var(--color-divider)"></div>
+    </div>
+
+    <sc-for list="{{ journey }}" as="item" hint-placeholder-count="4">
+      <div style="display:grid;grid-template-columns:120px 32px 1fr 240px;gap:24px;align-items:start;padding:26px 0;border-bottom:1px solid var(--color-divider)">
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:15px;letter-spacing:.02em;padding-top:2px">{{ item.year }}</div>
+        <div style="position:relative;height:100%;display:flex;justify-content:center">
+          <div style="position:absolute;top:0;bottom:-26px;width:2px;background:var(--color-divider)"></div>
+          <div style="position:relative;margin-top:6px;width:{{ item.dot }};height:{{ item.dot }};background:{{ item.dotFill }};border:2px solid {{ item.dotBorder }}"></div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:21px;letter-spacing:-.02em">{{ item.title }}</div>
+          <div style="font-size:15px;margin-top:6px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 70%,transparent);max-width:56ch">{{ item.detail }}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+          <span class="tag tag-outline" style="white-space:nowrap">{{ item.kind }}</span>
+          <sc-if value="{{ item.hasCert }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ item.openCert }}" style="appearance:none;background:transparent;border:0;border-bottom:2px solid var(--color-accent);padding:0 0 3px;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--color-text)" style-hover="color:var(--color-accent)">Certificate</button>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Currently Building" style="background:var(--color-accent);color:#f8f4f4">
+  <div style="max-width:1360px;margin:0 auto;padding:88px 40px">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px">
+      <div style="grid-column:span 5">
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.8">07 — Currently Building</div>
+        <h2 style="font-size:clamp(36px,4.4vw,58px);line-height:1;letter-spacing:-.035em;margin:20px 0 0;color:#f8f4f4">Work in progress.</h2>
+      </div>
+      <div style="grid-column:span 7;border-top:2px solid rgba(248,244,244,.4)">
+        <div style="display:grid;grid-template-columns:1fr 160px;gap:24px;padding:22px 0;border-bottom:2px solid rgba(248,244,244,.4)">
+          <div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:22px">TeamForge</div>
+            <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-top:6px;opacity:.75">EdTech · Collaboration Platform · 2026</div>
+            <div style="font-size:15px;margin-top:8px;opacity:.85">An all-in-one student collaboration platform connecting students, ideas, teams, and hackathon organizers.</div>
+            <div style="display:flex;align-items:center;gap:22px;margin-top:16px">
+              <button onClick="{{ openTeamForge }}" style="appearance:none;background:transparent;border:0;border-bottom:2px solid #f8f4f4;padding:0 0 3px;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#f8f4f4">View more</button>
+              <a href="https://github.com/ankithhegde-17/TeamForge" target="_blank" rel="noopener noreferrer" style="color:#f8f4f4;border-bottom:2px solid rgba(248,244,244,.5);padding-bottom:3px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">GitHub</a>
+            </div>
+          </div>
+          <div style="text-align:right;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding-top:6px">In development</div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Beyond Code" style="max-width:1360px;margin:0 auto;padding:0 40px">
+  <div style="padding:88px 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:40px">
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">08 — Beyond Code</div>
+        <h2 style="font-size:clamp(32px,3.6vw,48px);line-height:1.05;letter-spacing:-.03em;margin:18px 0 0">The rest of it.</h2>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+      <figure>
+        <div style="position:relative;width:100%;aspect-ratio:3/4;border:2px solid var(--color-divider);overflow:hidden">
+          <img src="assets/travel-01.jpeg" alt="Aircraft seen through an airport opening at sunrise" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%">
+        </div>
+        <figcaption style="margin-top:12px;font-size:15px;color:var(--color-text)"><strong style="font-family:var(--font-heading)">Travel.</strong> Exploring cultures, places and perspectives.</figcaption>
+        <button onClick="{{ openTravel }}" style="appearance:none;background:transparent;border:0;border-bottom:2px solid var(--color-accent);padding:0 0 3px;margin-top:14px;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--color-text)">View more</button>
+      </figure>
+      <figure>
+        <div style="position:relative;width:100%;aspect-ratio:3/4;border:2px solid var(--color-divider);background:var(--color-surface);overflow:hidden">
+          <img src="assets/design-01.png" alt="Startup Spark event poster" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
+        </div>
+        <figcaption style="margin-top:12px;font-size:15px;color:var(--color-text)"><strong style="font-family:var(--font-heading)">Design.</strong> Creating intuitive and purposeful experiences.</figcaption>
+        <button onClick="{{ openDesign }}" style="appearance:none;background:transparent;border:0;border-bottom:2px solid var(--color-accent);padding:0 0 3px;margin-top:14px;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--color-text)">View more</button>
+      </figure>
+      <figure>
+        <div style="position:relative;width:100%;aspect-ratio:3/4;border:2px solid var(--color-divider);background:var(--color-surface);overflow:hidden">
+          <img src="assets/cloudai-01.png" alt="Google Cloud Career Launchpad — Cloud Engineer track certificate" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
+        </div>
+        <figcaption style="margin-top:12px;font-size:15px;color:var(--color-text)"><strong style="font-family:var(--font-heading)">Cloud &amp; AI.</strong> Learning technologies that shape the future.</figcaption>
+        <button onClick="{{ openCloudAI }}" style="appearance:none;background:transparent;border:0;border-bottom:2px solid var(--color-accent);padding:0 0 3px;margin-top:14px;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--color-text)">View more</button>
+      </figure>
+      <figure>
+        <div style="position:relative;width:100%;aspect-ratio:3/4;border:2px solid var(--color-divider);background:var(--color-surface);overflow:hidden">
+          <img src="assets/adventure-01.png" alt="Bare trees and a hillside path in thick morning mist" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%">
+        </div>
+        <figcaption style="margin-top:12px;font-size:15px;color:var(--color-text)"><strong style="font-family:var(--font-heading)">Adventure.</strong> Growing through new challenges and experiences beyond the familiar.</figcaption>
+        <button onClick="{{ openAdventure }}" style="appearance:none;background:transparent;border:0;border-bottom:2px solid var(--color-accent);padding:0 0 3px;margin-top:14px;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--color-text)">View more</button>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="Contact" style="max-width:1360px;margin:0 auto;padding:0 40px">
+  <div style="border-top:2px solid var(--color-divider);padding:96px 0">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px">
+      <div style="grid-column:span 5">
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">09 — Contact</div>
+        <h2 style="font-size:clamp(36px,4.4vw,58px);line-height:1;letter-spacing:-.035em;margin:20px 0 0;max-width:12ch">Let's build something.</h2>
+        <p style="margin:24px 0 0;max-width:40ch;font-size:17px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Open to internships and collaborations. Send a note and I'll get back to you.</p>
+        <div style="margin-top:40px;border-top:2px solid var(--color-divider)">
+          <div style="padding:16px 0;border-bottom:1px solid var(--color-divider);display:flex;justify-content:space-between;gap:16px;font-size:15px">
+            <span style="color:color-mix(in srgb,var(--color-text) 55%,transparent)">Email</span><a href="mailto:ankithhegde001@gmail.com">ankithhegde001@gmail.com</a>
+          </div>
+          <div style="padding:16px 0;border-bottom:1px solid var(--color-divider);display:flex;justify-content:space-between;gap:16px;font-size:15px">
+            <span style="color:color-mix(in srgb,var(--color-text) 55%,transparent)">GitHub</span><a href="https://github.com/ankithhegde-17" target="_blank" rel="noopener noreferrer">ankithhegde-17</a>
+          </div>
+          <div style="padding:16px 0;border-bottom:1px solid var(--color-divider);display:flex;justify-content:space-between;gap:16px;font-size:15px">
+            <span style="color:color-mix(in srgb,var(--color-text) 55%,transparent)">LinkedIn</span><a href="https://www.linkedin.com/in/hegdeankith/" target="_blank" rel="noopener noreferrer">hegdeankith</a>
+          </div>
+          <div style="padding:16px 0;display:flex;justify-content:space-between;gap:16px;font-size:15px">
+            <span style="color:color-mix(in srgb,var(--color-text) 55%,transparent)">Based in</span><span>Mysuru, Karnataka</span>
+          </div>
+        </div>
+      </div>
+      <div style="grid-column:span 7;border:2px solid var(--color-divider);padding:40px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div class="field">
+            <label style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Name</label>
+            <input class="input" placeholder="Your name" style="height:48px">
+          </div>
+          <div class="field">
+            <label style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Email</label>
+            <input class="input" placeholder="you@example.com" style="height:48px">
+          </div>
+          <div class="field">
+            <label style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Phone number</label>
+            <input class="input" placeholder="+91" style="height:48px">
+          </div>
+          <div class="field">
+            <label style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Subject</label>
+            <input class="input" placeholder="Internship, collaboration, other" style="height:48px">
+          </div>
+        </div>
+        <div class="field" style="margin-top:24px">
+          <label style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Message</label>
+          <textarea class="input" rows="6" placeholder="What would you like to talk about?" style="resize:vertical"></textarea>
+        </div>
+        <div style="margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:2px solid var(--color-divider);padding-top:24px">
+          <div style="font-size:13px;line-height:1.5;color:color-mix(in srgb,var(--color-text) 55%,transparent);max-width:38ch">Submissions are stored securely and only used to reply.</div>
+          <button class="btn btn-primary" style="height:48px;padding:0 26px;font-size:14px">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="Footer" style="border-top:2px solid var(--color-divider)">
+  <div style="max-width:1360px;margin:0 auto;padding:56px 40px 32px">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:32px">
+      <div style="grid-column:span 5">
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(32px,3.4vw,44px);letter-spacing:-.03em;line-height:1">Ankith Hegde</div>
+        <div style="font-size:15px;margin-top:10px;color:color-mix(in srgb,var(--color-text) 60%,transparent)">AI &amp; Data Science Engineering Student<br>Product Builder • Design Enthusiast</div>
+      </div>
+      <div style="grid-column:span 2">
+        <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent);margin-bottom:12px">Sections</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
+          <a href="#work" style="color:var(--color-text)">Work</a>
+          <a href="#about" style="color:var(--color-text)">About</a>
+          <a href="#journey" style="color:var(--color-text)">Journey</a>
+          <a href="#contact" style="color:var(--color-text)">Contact</a>
+        </div>
+      </div>
+      <div style="grid-column:span 2">
+        <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent);margin-bottom:12px">Elsewhere</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
+          <a href="https://github.com/ankithhegde-17" target="_blank" rel="noopener noreferrer" style="color:var(--color-text)">GitHub</a>
+          <a href="https://www.linkedin.com/in/hegdeankith/" target="_blank" rel="noopener noreferrer" style="color:var(--color-text)">LinkedIn</a>
+          <a href="mailto:ankithhegde001@gmail.com" style="color:var(--color-text)">Email</a>
+        </div>
+      </div>
+      <div style="grid-column:span 3;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start">
+        <button onClick="{{ toTop }}" class="btn btn-secondary" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Back to top ↑</button>
+      </div>
+    </div>
+    <div style="margin-top:48px;border-top:2px solid var(--color-divider);padding-top:20px;display:flex;justify-content:flex-start;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 50%,transparent)">
+      <span>© 2026 Ankith Hegde</span>
+    </div>
+  </div>
+</footer>
+
+<section data-screen-label="Mobile" style="border-top:2px solid var(--color-divider);background:var(--color-surface)">
+  <div style="max-width:1360px;margin:0 auto;padding:88px 40px">
+    <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">Appendix — Mobile</div>
+    <h2 style="font-size:clamp(32px,3.6vw,48px);line-height:1.05;letter-spacing:-.03em;margin:18px 0 8px">Designed for the phone, not shrunk to it.</h2>
+    <p style="max-width:60ch;font-size:16px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Single column on a 4-column grid, 20px margins, 48px minimum touch targets. Projects become full-bleed stacked entries; the timeline drops its year column into an inline marker; the form goes one field per row.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(390px,1fr));gap:40px 32px;margin-top:48px;justify-items:center">
+
+      <div style="width:390px">
+        <div style="width:390px;height:780px;border:2px solid var(--color-text);background:var(--color-bg);overflow:hidden;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;padding:10px 16px;font-size:10px;letter-spacing:.06em;border-bottom:1px solid var(--color-divider);color:color-mix(in srgb,var(--color-text) 55%,transparent)"><span>9:41</span><span>▮▮▮</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:2px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:13px">Ankith Hegde</span>
+            <span style="display:flex;flex-direction:column;gap:4px"><span style="width:20px;height:2px;background:var(--color-text)"></span><span style="width:20px;height:2px;background:var(--color-text)"></span></span>
+          </div>
+          <div style="padding:20px 16px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-divider);padding:5px 9px;width:max-content;font-size:9px;letter-spacing:.09em;text-transform:uppercase"><span style="width:5px;height:5px;background:var(--color-accent)"></span>Open to internships</div>
+            <div style="font-size:11px;color:color-mix(in srgb,var(--color-text) 60%,transparent)">Hello, I'm</div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:42px;line-height:.9;letter-spacing:-.04em;margin-top:-6px">Ankith<br>Hegde</div>
+            <div style="font-family:var(--font-heading);font-weight:700;font-size:14px;line-height:1.35">AI &amp; Data Science Engineering Student<div style="font-weight:500;color:color-mix(in srgb,var(--color-text) 62%,transparent)">Product Builder • Design Enthusiast</div></div>
+            <div class="grayscale" style="position:relative;width:100%;aspect-ratio:4/3;border:2px solid var(--color-divider)"><img src="assets/ankith-portrait.png" alt="Portrait of Ankith Hegde" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 14%"></div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="background:var(--color-accent);color:var(--color-bg);height:48px;display:flex;align-items:center;padding:0 14px;font-family:var(--font-heading);font-weight:800;font-size:12px">View Projects</div>
+              <div style="border:1px solid var(--color-divider);height:48px;display:flex;align-items:center;padding:0 14px;font-family:var(--font-heading);font-weight:800;font-size:12px">Download Resume</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">01 — Hero</div>
+      </div>
+
+      <div style="width:390px">
+        <div style="width:390px;height:780px;border:2px solid var(--color-text);background:#181818;color:#f2f2f2;overflow:hidden;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;padding:10px 16px;font-size:10px;letter-spacing:.06em;border-bottom:1px solid rgba(243,242,242,.25);color:rgba(243,242,242,.6)"><span>9:41</span><span>▮▮▮</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:2px solid rgba(243,242,242,.3)">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:13px">Ankith Hegde</span>
+            <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase">Close</span>
+          </div>
+          <div style="padding:8px 16px;display:flex;flex-direction:column;flex:1">
+            <div style="padding:18px 0;border-bottom:1px solid rgba(243,242,242,.22);font-family:var(--font-heading);font-weight:800;font-size:28px;letter-spacing:-.03em">Work</div>
+            <div style="padding:18px 0;border-bottom:1px solid rgba(243,242,242,.22);font-family:var(--font-heading);font-weight:800;font-size:28px;letter-spacing:-.03em">About</div>
+            <div style="padding:18px 0;border-bottom:1px solid rgba(243,242,242,.22);font-family:var(--font-heading);font-weight:800;font-size:28px;letter-spacing:-.03em">Journey</div>
+            <div style="padding:18px 0;border-bottom:1px solid rgba(243,242,242,.22);font-family:var(--font-heading);font-weight:800;font-size:28px;letter-spacing:-.03em;color:var(--color-accent-500)">Contact</div>
+            <div style="margin-top:auto;padding:16px 0;display:flex;gap:18px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:rgba(243,242,242,.7)"><span>GitHub</span><span>LinkedIn</span><span>Email</span></div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">02 — Menu, dark mode</div>
+      </div>
+
+      <div style="width:390px">
+        <div style="width:390px;height:780px;border:2px solid var(--color-text);background:var(--color-bg);overflow:hidden;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;padding:10px 16px;font-size:10px;letter-spacing:.06em;border-bottom:1px solid var(--color-divider);color:color-mix(in srgb,var(--color-text) 55%,transparent)"><span>9:41</span><span>▮▮▮</span></div>
+          <div style="padding:18px 16px 0">
+            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700">04 — Featured Projects</div>
+          </div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:14px">
+            <div style="border-top:2px solid var(--color-divider);padding-top:14px">
+              <div style="display:flex;gap:10px;align-items:baseline"><span style="font-size:11px;font-weight:800;color:var(--color-accent)">01</span><span style="font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Flagship project</span></div>
+              <div style="font-family:var(--font-heading);font-weight:800;font-size:26px;letter-spacing:-.03em;margin-top:6px">Memoir</div>
+              <div class="grayscale" style="position:relative;width:100%;aspect-ratio:16/10;border:2px solid var(--color-divider);margin-top:10px"><image-slot id="m-proj" shape="rect" placeholder="Project visual"></image-slot></div>
+              <div style="font-size:12px;line-height:1.55;margin-top:10px;color:color-mix(in srgb,var(--color-text) 72%,transparent)">Description to be added.</div>
+              <div style="height:48px;display:flex;align-items:center;margin-top:8px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 45%,transparent)">Links pending</div>
+            </div>
+            <div style="border-top:1px solid var(--color-divider);padding-top:14px">
+              <div style="display:flex;gap:10px;align-items:baseline"><span style="font-size:11px;font-weight:800;color:var(--color-accent)">02</span><span style="font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Platform</span></div>
+              <div style="font-family:var(--font-heading);font-weight:800;font-size:26px;letter-spacing:-.03em;margin-top:6px">DiscoverBuddy</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">03 — Projects</div>
+      </div>
+
+      <div style="width:390px">
+        <div style="width:390px;height:780px;border:2px solid var(--color-text);background:var(--color-bg);overflow:hidden;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;padding:10px 16px;font-size:10px;letter-spacing:.06em;border-bottom:1px solid var(--color-divider);color:color-mix(in srgb,var(--color-text) 55%,transparent)"><span>9:41</span><span>▮▮▮</span></div>
+          <div style="padding:18px 16px 0">
+            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700">09 — Contact</div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1;margin-top:10px">Let's build something.</div>
+          </div>
+          <div style="padding:18px 16px;display:flex;flex-direction:column;gap:12px">
+            <div><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Name</div><div style="height:48px;border:1px solid var(--color-divider);margin-top:5px"></div></div>
+            <div><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Email</div><div style="height:48px;border:2px solid var(--color-accent);margin-top:5px"></div></div>
+            <div><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Phone number</div><div style="height:48px;border:1px solid var(--color-divider);margin-top:5px"></div></div>
+            <div><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Subject</div><div style="height:48px;border:1px solid var(--color-divider);margin-top:5px"></div></div>
+            <div><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Message</div><div style="height:76px;border:1px solid var(--color-divider);margin-top:5px"></div></div>
+            <div style="background:var(--color-accent);color:var(--color-bg);height:48px;display:flex;align-items:center;padding:0 14px;font-family:var(--font-heading);font-weight:800;font-size:12px">Send message</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">04 — Contact</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000}}">
+class Component extends DCLogic {
+  state = { theme: "light", loading: true, pct: 0, certId: null };
+
+  // Reusable certificate records — one entry per credential.
+  // certificate:  static asset path served from /public/certificates/ in production.
+  // previewImage: static image shown inside the modal (null until supplied).
+  // Nothing here depends on any hosted viewer — both actions are plain links to static files.
+  certificates = {
+    "gc-launchpad": {
+      id: "gc-launchpad",
+      title: "Google Cloud Career Launchpad",
+      subtitle: "Cloud Engineer Track",
+      issuer: "Google Cloud",
+      date: "20 May 2026",
+      type: "Certification",
+      certificate: "certificates/google-cloud-career-launchpad.pdf", // production: /certificates/google-cloud-career-launchpad.pdf
+      previewImage: null,
+      credentialId: null,
+      verifyUrl: null,
+    },
+    "pals-innowah": {
+      id: "pals-innowah",
+      title: "PALS innoWAH! Cluster Finals",
+      subtitle: "Team SATTVA",
+      issuer: "PALS",
+      date: "14 February 2026",
+      type: "Competition",
+      certificate: null,
+      previewImage: null,
+      credentialId: null,
+      verifyUrl: null,
+    },
+    "copilot-genai": {
+      id: "copilot-genai",
+      title: "Generative AI with Microsoft Copilot",
+      subtitle: null,
+      issuer: null,
+      date: "2025",
+      type: "Certification",
+      certificate: null,
+      previewImage: null,
+      credentialId: null,
+      verifyUrl: null,
+    },
+    "fullstack-web": {
+      id: "fullstack-web",
+      title: "Full Stack Web Development",
+      subtitle: null,
+      issuer: null,
+      date: "February 2026",
+      type: "Certification",
+      certificate: null,
+      previewImage: null,
+      credentialId: null,
+      verifyUrl: null,
+    },
+  };
+
+  // Reusable case-study records — one entry per flagship project.
+  caseStudies = {
+    memoir: {
+      title: "Memoir",
+      meta: "Personal Life Companion · 2026 · In Development",
+      problem: "Our lives are scattered across multiple disconnected apps. Journaling, tasks, expenses, memories, photos, habits, moods, and reflections often exist separately, making it difficult to understand the bigger picture of how we lived and changed over time.",
+      solution: "Memoir brings different aspects of everyday life into one calm, unified experience centered around the idea:",
+      quote: "“Here's today's page of your life.”",
+      solutionAfter: "Each day becomes a page. Over time, those pages become chapters of a personal story.",
+      features: ["Today's Page", "Journal", "Tasks & Habits", "Mood, Sleep & Water", "Expenses", "Daily Reflection", "Daily Story", "Search", "Statistics", "Offline-first PWA"],
+      role: "Product strategy, product design, UX/UI design, system architecture, frontend development, database architecture, and overall product development.",
+      challenge: "Bring many different aspects of personal life into one product without making Memoir feel like a cluttered collection of trackers.",
+      approach: "Design the entire experience around the user's day and organize the product around three pillars:",
+      pillars: [
+        { name: "Remember", text: "Preserve experiences and memories." },
+        { name: "Reflect", text: "Understand the day and personal patterns." },
+        { name: "Grow", text: "Support habits, tasks, and progress." },
+      ],
+      outcome: "Memoir is being developed as a polished, installable Progressive Web App designed to become a long-term personal life companion.",
+      stack: "React · TypeScript · Vite · Tailwind CSS · Framer Motion · Supabase · PostgreSQL · Dexie.js · PWA · Vercel",
+    },
+    discoverbuddy: {
+      title: "DiscoverBuddy",
+      meta: "Platform · 2026 · In Development",
+      problem: "Travelers often experience cities through the same tourist attractions and commercial tour packages, making it difficult to discover authentic local experiences. At the same time, students who know their cities well have limited opportunities to share that knowledge and earn from it.",
+      solution: "DiscoverBuddy is a travel platform that connects travelers with local student guides who can help them explore a city through personalized, local experiences.",
+      quote: "The product initially focuses on Mysuru, with the goal of developing a model that can eventually expand to other cities.",
+      solutionAfter: "",
+      features: null,
+      featureRows: [
+        { name: "Student Guide Discovery", text: "Find local students who can guide travelers around their city." },
+        { name: "Guide Profiles", text: "View information about guides and their local knowledge before choosing an experience." },
+        { name: "Location-Based Discovery", text: "Explore places and experiences through an interactive map." },
+        { name: "Traveler & Guide Experience", text: "Separate flows designed around the needs of travelers and student guides." },
+      ],
+      role: "I worked across the entire product — from defining the concept and user experience to designing and developing the platform. My contributions included product strategy, UX/UI design, frontend development, backend architecture, integration of location-based features, and deployment.",
+      challenge: "The hardest part was not simply building the platform; it was defining the right product for a two-sided marketplace. I had to determine what travelers would actually need from a local guide, how to make student guides trustworthy, and which features were essential for the first version without overbuilding the product.",
+      approach: "I focused on the core interaction first: discover a local guide → understand the experience → connect with the guide. Instead of trying to build a complete travel ecosystem, I kept the initial product focused on the relationship between travelers and local student guides. The first version targets Mysuru so the concept can be tested within a defined market before expanding to additional cities.",
+      pillars: null,
+      outcome: "A functional DiscoverBuddy prototype was developed with the core product experience and technical foundation in place. The project established the initial product direction, user flows, visual system, and architecture needed to test the concept with real travelers and student guides. The next step is to pilot the platform in Mysuru, gather feedback from both sides of the marketplace, and refine the experience based on real usage.",
+      stack: "React · Firebase · Tailwind CSS · Mapbox · Framer Motion · GitHub · Netlify",
+    },
+    ecosort: {
+      title: "EcoSort",
+      meta: "AI / IoT · 2026 · Prototype",
+      problem: "Improper waste segregation is one of the major challenges in effective waste management. Mixed waste reduces recycling efficiency, increases landfill volume and creates health and safety risks for sanitation workers. EcoSort addresses the problem at its source by enabling intelligent waste classification and segregation while also providing real-time monitoring of bin status and collection requirements.",
+      solution: "EcoSort is an AI-driven smart waste management ecosystem that combines computer vision, IoT, edge computing and automation.",
+      quote: "The system uses an ESP32-CAM to capture waste images, TensorFlow Lite for on-device waste classification, and a Raspberry Pi for local prediction and system orchestration. Ultrasonic sensors monitor bin fill levels, while GPS and cloud connectivity enable municipal teams to monitor bins and optimise collection routes.",
+      solutionAfter: "The ecosystem also includes a citizen application and municipal dashboard for alerts, analytics, reporting and collection management.",
+      features: null,
+      featureRows: null,
+      featureBullets: [
+        "AI-based waste classification using TensorFlow Lite",
+        "Automatic waste segregation using servo-actuated compartments",
+        "Real-time fill-level monitoring using ultrasonic sensors",
+        "GPS-enabled bin tracking, alerts and collection route optimisation",
+      ],
+      role: "I worked on the hardware and IoT side of the project, contributing to the design and integration of the smart-bin system and its connected components. I also contributed to the business strategy, including identifying potential customer segments, revenue opportunities and the pilot-to-scale approach for deploying the solution. My primary focus was on connecting the physical hardware and IoT layer with the broader EcoSort ecosystem.",
+      challenge: "The key challenge was designing a system that could perform waste classification and segregation at the source while continuously monitoring the physical state of the bin. The system needed to combine AI inference, sensors, hardware actuation and cloud-based monitoring into one connected workflow.",
+      approach: "We designed an edge-first architecture where waste is classified locally at the smart bin instead of relying entirely on cloud processing. The ESP32-CAM captures the waste image, TensorFlow Lite performs the classification, and the Raspberry Pi handles local predictions and device orchestration. Ultrasonic sensors continuously monitor fill levels, while GPS and cloud connectivity provide monitoring and collection optimisation. This architecture enables local decision-making at the bin while maintaining cloud-based monitoring for operators and municipalities.",
+      pillars: null,
+      outcome: "EcoSort developed into a complete AI-powered waste management concept rather than a standalone smart dustbin. The proposed ecosystem combines AI-based classification, automatic segregation, IoT monitoring, GPS-based collection optimisation, a citizen application and a municipal dashboard. The project was developed as part of the National Entrepreneurship Challenge (NEC) 2026 at E-Cell IIT Bombay, with the next steps including a technical trial at Maharaja Institute of Technology, a municipal pilot and tender-ready documentation.",
+      stack: "TensorFlow Lite · Raspberry Pi · ESP32-CAM · Ultrasonic Sensors · IoT · GPS · Computer Vision · Cloud Platform · Municipal Dashboard · Citizen Mobile App · Servo Actuation",
+    },
+    teamforge: {
+      title: "TeamForge",
+      meta: "EdTech · Collaboration Platform · 2026 · In Development",
+      problem: "Students often struggle to find the right teammates for hackathons, college projects, and startup ideas. Opportunities are scattered across WhatsApp groups, college communities, social media, and different event platforms. Students with good ideas also lack a dedicated way to find collaborators, receive feedback, or build a team around their idea. Hackathon organizers similarly rely on disconnected tools for registrations, team management, judging, and evaluation.",
+      solution: "TeamForge is a unified platform where students can create profiles, discover teammates from their own college or other colleges, post project and startup ideas, receive suggestions, and join teams based on skills and interests. Organizers can create and manage hackathons, handle participants and teams, and conduct judging and evaluation directly through the platform.",
+      quote: "The goal is to create a single ecosystem for student collaboration — from finding an idea and forming a team to participating in a hackathon and getting evaluated.",
+      solutionAfter: "",
+      features: null,
+      featureBullets: null,
+      featureRows: [
+        { name: "Teammate Discovery", text: "Find students based on skills, interests, and project requirements." },
+        { name: "Project & Startup Ideas", text: "Post ideas, receive feedback, and allow interested students to join." },
+        { name: "Hackathon Management", text: "Create hackathons and manage registrations, teams, and participants." },
+        { name: "Online Evaluation", text: "Judges and organizers can evaluate projects and assign scores directly through the platform." },
+        { name: "Student Profiles", text: "Showcase skills, interests, projects, achievements, and hackathon experience." },
+        { name: "Team Formation", text: "Create teams, invite members, and collaborate around projects." },
+        { name: "Cross-College Collaboration", text: "Connect with students beyond your own institution." },
+        { name: "Centralized Platform", text: "Bring students, teams, projects, startup ideas, hackathons, and evaluations into one ecosystem." },
+      ],
+      role: "Product Design · UI/UX · Frontend Development · Product Architecture. I am responsible for conceptualizing the product, defining the user experience, designing the interface, and developing the platform.",
+      challenge: "The main challenge is designing one platform for multiple user types — students, team leaders, judges, and hackathon organizers — while keeping the experience simple and intuitive.",
+      approach: "The product is designed as an ecosystem rather than a collection of separate features. The experience follows: Discover → Connect → Build → Participate → Evaluate. Students discover people and ideas, connect with potential teammates, form teams, participate in hackathons, and receive evaluation through the same platform.",
+      pillars: null,
+      outcome: "Currently in development. The platform is being built as a unified collaboration ecosystem for students and hackathon organizers, with the long-term goal of becoming a single destination for discovering teammates, building projects, developing startup ideas, participating in hackathons, and evaluating projects.",
+      stack: "React · Next.js · TypeScript · Tailwind CSS · Firebase · Node.js",
+    },
+  };
+
+  // Beyond Code galleries — add image paths to `images` as they are supplied.
+  galleries = {
+    travel: {
+      title: "Travel",
+      description: "Exploring cultures, places and perspectives.",
+      images: [
+        { src: "assets/travel-01.jpeg", alt: "Aircraft seen through an airport opening at sunrise" },
+        { src: "assets/travel-02.jpeg", alt: "Wooden pagoda above a lotus pond, prayer flags overhead" },
+        { src: "assets/travel-03.jpeg", alt: "Limestone karsts rising from calm bay water" },
+        { src: "assets/travel-04.jpeg", alt: "Tree-lined boulevard and fountain seen from a terrace" },
+        { src: "assets/travel-05.jpeg", alt: "City intersection at night with lit signage" },
+      ],
+    },
+    design: {
+      title: "Design",
+      description: "Creating intuitive and purposeful experiences.",
+      images: [
+        { src: "assets/design-01.png", alt: "Startup Spark event poster" },
+        { src: "assets/design-02.png", alt: "EntreMITT 2026 stall booking expo poster" },
+        { src: "assets/design-03.jpeg", alt: "EntreMITT 2026 — Inspiring Vision to Venture poster" },
+        { src: "assets/design-04.png", alt: "EntreMITT 2026 illustrated poster" },
+      ],
+    },
+    cloudai: {
+      title: "Cloud & AI",
+      description: "Learning technologies that shape the future.",
+      images: [{ src: "assets/cloudai-01.png", alt: "Google Cloud Career Launchpad — Cloud Engineer track certificate" }],
+    },
+    adventure: {
+      title: "Adventure",
+      description: "Growing through new challenges and experiences beyond the familiar.",
+      images: [
+        { src: "assets/adventure-01.png", alt: "Bare trees and a hillside path in thick morning mist" },
+        { src: "assets/adventure-02.png", alt: "Hillside forest opening onto a distant valley" },
+        { src: "assets/adventure-03.png", alt: "Trees along a stone ledge above farmland" },
+        { src: "assets/adventure-04.png", alt: "Low cloud over a green valley, stone structure on the ridge" },
+      ],
+    },
+  };
+
+  componentDidMount() {
+    this.runIntro();
+    requestAnimationFrame(() => this.setupReveals());
+    this._esc = (e) => { if (e.key === "Escape") this.setState({ certId: null, menuOpen: false, studyId: null, galleryId: null }); };
+    window.addEventListener("keydown", this._esc);
+    this._scroll = () => this.markActiveSection();
+    window.addEventListener("scroll", this._scroll, { passive: true });
+    this.markActiveSection();
+  }
+  componentWillUnmount() {
+    clearInterval(this._t);
+    window.removeEventListener("keydown", this._esc);
+    window.removeEventListener("scroll", this._scroll);
+  }
+
+  // Underlines the nav item for the section currently under the bar.
+  markActiveSection() {
+    const ids = ["home", "about", "work", "journey", "contact"];
+    let active = ids[0];
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 140) active = id;
+    });
+    document.querySelectorAll("[data-nav-links] a[data-nav]").forEach((a) => {
+      a.style.borderBottomColor = a.dataset.nav === active ? "var(--color-accent)" : "transparent";
+    });
+  }
+
+  runIntro() {
+    clearInterval(this._t);
+    this.setState({ loading: true, pct: 0 });
+    const start = Date.now();
+    this._t = setInterval(() => {
+      const p = Math.min(100, Math.round(((Date.now() - start) / 1300) * 100));
+      this.setState({ pct: p });
+      if (p >= 100) { clearInterval(this._t); setTimeout(() => this.setState({ loading: false }), 260); }
+    }, 40);
+  }
+
+  setupReveals() {
+    const nodes = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (!nodes.length || !("IntersectionObserver" in window)) return;
+    nodes.forEach((el, i) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(12px)";
+      el.style.transition = "opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)";
+      el.style.transitionDelay = (i % 6) * 60 + "ms";
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.style.opacity = "1"; e.target.style.transform = "none"; io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    nodes.forEach((n) => io.observe(n));
+    setTimeout(() => nodes.forEach((n) => { n.style.opacity = "1"; n.style.transform = "none"; }), 3000);
+  }
+
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    const themeVars = dark
+      ? {
+          "--color-bg": "#181818",
+          "--color-surface": "#202020",
+          "--color-text": "#f2f2f2",
+          "--color-accent": "#ff563c",
+          "--color-accent-600": "#ff7a64",
+          "--color-accent-700": "#ffb0a0",
+          "--color-divider": "#3a3a3a",
+        }
+      : {};
+
+    const mk = (year, title, detail, kind, big, certId) => ({
+      year, title, detail, kind,
+      dot: big ? "14px" : "10px",
+      dotFill: big ? "var(--color-accent)" : "var(--color-bg)",
+      dotBorder: big ? "var(--color-accent)" : "var(--color-divider)",
+      hasCert: !!certId,
+      openCert: certId ? () => this.setState({ certId }) : null,
+    });
+
+    const c = this.certificates[this.state.certId];
+    const cert = c && {
+      type: c.type,
+      title: c.title,
+      meta: [c.subtitle, c.issuer, c.date].filter(Boolean).join(" · "),
+      file: c.certificate,
+      previewEl: c.previewImage
+        ? React.createElement("img", {
+            src: c.previewImage,
+            alt: c.title + " certificate",
+            style: { display: "block", maxWidth: "100%", maxHeight: "100%", objectFit: "contain", border: "1px solid var(--color-divider)", background: "var(--color-bg)" },
+          })
+        : null,
+      hasPreviewImage: !!c.previewImage,
+      showPlaceholder: !!c.certificate && !c.previewImage,
+      pending: !c.certificate,
+      credential: c.credentialId ? "Credential ID " + c.credentialId : (c.certificate ? "PDF · original file" : "Certificate file pending"),
+    };
+
+    return {
+      themeVars,
+      themeLabel: dark ? "Light" : "Dark",
+      loading: this.state.loading,
+      pct: this.state.pct,
+      toggleTheme: () => this.setState((s) => ({ theme: s.theme === "dark" ? "light" : "dark" })),
+      toTop: () => window.scrollTo({ top: 0, behavior: "smooth" }),
+      cert,
+      gallery: (() => {
+        const g = this.galleries[this.state.galleryId];
+        if (!g) return null;
+        const [lead, ...rest] = g.images;
+        return {
+          title: g.title,
+          description: g.description,
+          leadEl: lead
+            ? React.createElement("img", { src: lead.src, alt: lead.alt, style: { display: "block", width: "100%", height: "auto", border: "1px solid var(--color-divider)" } })
+            : null,
+          // Masonry columns: every photo keeps its native aspect ratio, portrait or landscape.
+          thumbEls: React.createElement("div", { style: { columnCount: 2, columnGap: "16px" } },
+            rest.map((im, i) =>
+              React.createElement("img", {
+                key: i, src: im.src, alt: im.alt, loading: "lazy",
+                style: { display: "block", width: "100%", height: "auto", marginBottom: "16px", breakInside: "avoid", border: "1px solid var(--color-divider)" },
+              })
+            )
+          ),
+        };
+      })(),
+      openTravel: () => this.setState({ galleryId: "travel" }),
+      openDesign: () => this.setState({ galleryId: "design" }),
+      openCloudAI: () => this.setState({ galleryId: "cloudai" }),
+      openAdventure: () => this.setState({ galleryId: "adventure" }),
+      closeGallery: () => this.setState({ galleryId: null }),
+      study: this.caseStudies[this.state.studyId] || null,
+      openMemoir: () => this.setState({ studyId: "memoir" }),
+      openDiscoverBuddy: () => this.setState({ studyId: "discoverbuddy" }),
+      openEcoSort: () => this.setState({ studyId: "ecosort" }),
+      openTeamForge: () => this.setState({ studyId: "teamforge" }),
+      closeStudy: () => this.setState({ studyId: null }),
+      menuOpen: !!this.state.menuOpen,
+      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      closeCert: () => this.setState({ certId: null }),
+      stop: (e) => e.stopPropagation(),
+      journey: [
+        mk("Jun 2026", "Munde Banni", "SJCE Mysuru · 6 June 2026", "Event", false),
+        mk("May 2026", "Google Cloud Career Launchpad", "Cloud Engineer Track · 20 May 2026", "Certification", true, "gc-launchpad"),
+        mk("Mar 2026", "Vision Mysuru 2050 — Finalist", "15 March 2026", "Competition", true),
+        mk("Mar 2026", "ISRO ISTRAC Visit", "Bengaluru · 4 March 2026", "Visit", false),
+        mk("Feb 2026", "PALS innoWAH! Cluster Finals", "Team SATTVA · PALS · 14 February 2026 · NITTE MEENAKSHI INSTITUTE OF TECHNOLOGY, BENGALURU", "Competition", true, "pals-innowah"),
+        mk("Feb 2026", "Full Stack Web Development", "February 2026", "Certification", false, "fullstack-web"),
+        mk("Jan 2026", "IUCEE IASF 2026", "GITAM University, Bengaluru · January 2026", "Conference", false),
+        mk("Dec 2025", "Drone Workshop Organizer", "WINGS of MITT Aero Club · 18 December 2025", "Workshop", true),
+        mk("Dec 2025", "E-Summit IIT Bombay", "December 2025", "Event", false),
+        mk("Oct 2025", "Grassroots Innovation — Finalist", "Government of Karnataka · 15 October 2025", "Competition", true),
+        mk("2025", "Generative AI with Microsoft Copilot", "", "Certification", false, "copilot-genai"),
+        mk("Aug 2025", "ML & Deep Learning Internship", "AIQuantum Smart Solutions Pvt. Ltd. · 19 Aug — 18 Sept 2025", "Internship", true),
+        mk("Aug 2025", "Sigma Ideathon — Second Place", "21 August 2025", "Competition", true),
+        mk("Oct 2024", "Aero Modelling Workshop", "Nitte Meenakshi Institute of Technology, Bengaluru · October 2024", "Workshop", false),
+        mk("2024", "Started B.E. in AI & Data Science", "Maharaja Institute of Technology Mysuru", "Milestone", true),
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
