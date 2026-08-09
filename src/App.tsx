@@ -45,6 +45,20 @@ export default function App() {
     return () => window.removeEventListener("keydown", onEsc);
   }, []);
 
+  // Direct/deep anchor links (e.g. loading the site at "/#contact") land before
+  // React mounts the target, so the browser's native hash-scroll finds nothing.
+  // Jump once the target exists, respecting each section's scroll-margin-top.
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const target = document.getElementById(hash);
+    if (!target) return;
+    const prevBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = "auto";
+    target.scrollIntoView({ block: "start" });
+    document.documentElement.style.scrollBehavior = prevBehavior;
+  }, []);
+
   const activeCertificate = certId ? certificates[certId] : null;
   const activeCaseStudy = studyId ? caseStudies[studyId] : null;
   const activeGallery = galleryId ? galleries[galleryId] : null;
