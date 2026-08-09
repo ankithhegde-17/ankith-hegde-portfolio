@@ -47,6 +47,10 @@
   border: 1px solid var(--color-divider);
   background: var(--color-bg);
 }
+.previewLoading {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
 
 .placeholder {
   aspect-ratio: 297 / 210;

@@ -56,7 +56,9 @@ export function CertificatePdfPage({ src }: CertificatePdfPageProps) {
 
         const baseViewport = page.getViewport({ scale: 1 });
         const fitScale = Math.min(frameWidth / baseViewport.width, frameHeight / baseViewport.height);
-        const dpr = window.devicePixelRatio || 1;
+        // Cap DPR: uncapped 3x devices can push canvas allocation past mobile
+        // Safari's canvas memory limits, causing a silent render failure.
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
         const viewport = page.getViewport({ scale: fitScale * dpr });
 
         if (cancelled || myGeneration !== generation) return;
@@ -70,6 +72,7 @@ export function CertificatePdfPage({ src }: CertificatePdfPageProps) {
         await renderTask.promise;
       } catch (err) {
         if (!cancelled && myGeneration === generation && !(err instanceof Error && err.name === "RenderingCancelledException")) {
+          console.error("Certificate PDF render failed:", err);
           setError(true);
         }
       }
