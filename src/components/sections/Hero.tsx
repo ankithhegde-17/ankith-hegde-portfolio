@@ -1,13 +1,8 @@
-import type { MouseEvent } from "react";
 import { site, heroStats } from "@/data/site";
 import { Reveal } from "@/components/ui/Reveal";
 import styles from "./Hero.module.css";
 
 export function Hero() {
-  const handleResumeClick = (e: MouseEvent) => {
-    e.preventDefault();
-  };
-
   return (
     <section id="home" data-screen-label="Hero" className={styles.section}>
       <div className={styles.grid}>
@@ -44,10 +39,8 @@ export function Hero() {
               View Projects
             </a>
             <a
-              href="#"
-              onClick={handleResumeClick}
-              title="Resume coming soon"
-              aria-disabled="true"
+              href="/resume.pdf"
+              download
               className={`btn btn-secondary ${styles.ctaBtn}`}
             >
               Download Resume
