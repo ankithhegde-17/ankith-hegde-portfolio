@@ -64,9 +64,6 @@
   text-transform: uppercase;
   color: var(--color-text);
 }
-.viewMoreBtn:hover {
-  color: var(--color-accent);
-}
 
 @media (max-width: 900px) {
   .section { padding: 0 20px; }

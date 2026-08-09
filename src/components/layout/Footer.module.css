@@ -40,7 +40,6 @@
   font-size: 15px;
 }
 .colLinks a { color: var(--color-text); }
-.colLinks a:hover { color: var(--color-accent); }
 
 .toTopCol {
   grid-column: span 3;
