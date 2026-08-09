@@ -106,7 +106,10 @@
   .section { padding: 0 20px; }
   .container { padding: 64px 0; grid-template-columns: 1fr; gap: 40px; }
   .header, .formCol { grid-column: 1; }
-  .formCol { padding: 24px; }
-  .formGrid { grid-template-columns: 1fr; gap: 20px; }
-  .formFooter { flex-direction: column; align-items: stretch; }
+  .formCol { padding: 20px; }
+  .formCol label { margin-bottom: 3px; }
+  .formGrid { grid-template-columns: 1fr; gap: 14px; }
+  .messageField { margin-top: 16px; }
+  .messageField textarea { height: 100px; }
+  .formFooter { flex-direction: column; align-items: stretch; margin-top: 20px; padding-top: 16px; gap: 12px; }
 }
