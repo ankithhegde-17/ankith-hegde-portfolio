@@ -93,6 +93,9 @@
   color: var(--color-text);
   flex: none;
 }
+.navToggle:hover {
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+}
 .hamburger {
   display: flex;
   flex-direction: column;

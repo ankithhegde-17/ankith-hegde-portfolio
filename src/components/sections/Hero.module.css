@@ -102,6 +102,10 @@
   border-bottom: 2px solid var(--color-divider);
   padding-bottom: 3px;
 }
+.socialLink:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
 
 .portraitCol {
   grid-column: span 5;

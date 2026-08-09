@@ -50,6 +50,9 @@
   font-size: 18px;
   line-height: 1;
 }
+.closeBtn:hover {
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+}
 
 .footer {
   display: flex;

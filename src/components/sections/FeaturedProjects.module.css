@@ -119,6 +119,9 @@
   text-transform: uppercase;
   color: var(--color-text);
 }
+.viewMoreBtn:hover {
+  color: var(--color-accent);
+}
 .linkOut {
   color: var(--color-text);
   border-bottom: 2px solid var(--color-divider);
@@ -126,6 +129,10 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+.linkOut:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 .linkMuted {
   font-size: 13px;

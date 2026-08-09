@@ -1,6 +1,6 @@
 .section {
   background: var(--color-accent);
-  color: #f8f4f4;
+  color: var(--color-neutral-100);
 }
 .inner {
   max-width: 1360px;
@@ -27,7 +27,7 @@
   line-height: 1;
   letter-spacing: -0.035em;
   margin: 20px 0 0;
-  color: #f8f4f4;
+  color: var(--color-neutral-100);
 }
 .listCol {
   grid-column: span 7;
@@ -67,7 +67,7 @@
   appearance: none;
   background: transparent;
   border: 0;
-  border-bottom: 2px solid #f8f4f4;
+  border-bottom: 2px solid var(--color-neutral-100);
   padding: 0 0 3px;
   cursor: pointer;
   font-family: var(--font-heading);
@@ -75,15 +75,21 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #f8f4f4;
+  color: var(--color-neutral-100);
+}
+.viewMoreBtn:hover {
+  opacity: 0.75;
 }
 .githubLink {
-  color: #f8f4f4;
+  color: var(--color-neutral-100);
   border-bottom: 2px solid rgba(248, 244, 244, 0.5);
   padding-bottom: 3px;
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+.githubLink:hover {
+  opacity: 0.75;
 }
 .status {
   text-align: right;
