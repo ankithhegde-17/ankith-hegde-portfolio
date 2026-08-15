@@ -74,4 +74,16 @@ export const certificates: Record<string, Certificate> = {
     credentialId: null,
     verifyUrl: null,
   },
+  "claude-101-outskill": {
+    id: "claude-101-outskill",
+    title: "Claude 101 Workshop",
+    subtitle: "Completed the Claude 101 Workshop by Outskill, focused on practical use of Claude and AI-assisted workflows.",
+    issuer: "Outskill",
+    date: "12 August 2026",
+    type: "Certification",
+    certificate: "/certificates/claude-101-outskill-certificate.pdf",
+    previewImage: null,
+    credentialId: null,
+    verifyUrl: null,
+  },
 };

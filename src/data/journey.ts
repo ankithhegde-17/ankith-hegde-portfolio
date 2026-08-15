@@ -2,6 +2,7 @@ import type { JourneyItem } from "@/types";
 
 // Ported verbatim from Portfolio Concept.dc.html's `journey` array (built via the `mk` helper).
 export const journey: JourneyItem[] = [
+  { year: "Aug 2026", title: "Claude 101 Workshop", detail: "Outskill · 12 August 2026", kind: "Certification", big: false, certId: "claude-101-outskill" },
   { year: "Jun 2026", title: "Munde Banni", detail: "SJCE Mysuru · 6 June 2026", kind: "Event", big: false },
   { year: "May 2026", title: "Google Cloud Career Launchpad", detail: "Cloud Engineer Track · 20 May 2026", kind: "Certification", big: true, certId: "gc-launchpad" },
   { year: "Mar 2026", title: "Vision Mysuru 2050 — Finalist", detail: "15 March 2026", kind: "Competition", big: true },
