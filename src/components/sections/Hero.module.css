@@ -94,8 +94,7 @@
   display: flex;
   gap: 28px;
   font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 .socialLink {
   color: var(--color-text);

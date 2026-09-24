@@ -17,5 +17,5 @@ export const journey: JourneyItem[] = [
   { year: "Aug 2025", title: "ML & Deep Learning Internship", detail: "AIQuantum Smart Solutions Pvt. Ltd. · 19 Aug — 18 Sept 2025", kind: "Internship", big: true },
   { year: "Aug 2025", title: "Sigma Ideathon — Second Place", detail: "21 August 2025", kind: "Competition", big: true, certId: "sigma-ideathon" },
   { year: "Oct 2024", title: "Aero Modelling Workshop", detail: "Nitte Meenakshi Institute of Technology, Bengaluru · October 2024", kind: "Workshop", big: false },
-  { year: "2024", title: "Started B.E. in AI & Data Science", detail: "Maharaja Institute of Technology Mysuru", kind: "Milestone", big: true },
+  { year: "2024", title: "Started B.E. in AI & Data Science", detail: "Maharaja Institute of Technology Thandavapura", kind: "Milestone", big: true },
 ];

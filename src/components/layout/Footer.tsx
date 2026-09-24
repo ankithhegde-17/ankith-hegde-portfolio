@@ -31,13 +31,13 @@ export function Footer() {
           <div className={styles.col}>
             <div className={styles.colHeading}>Elsewhere</div>
             <div className={styles.colLinks}>
-              <a href={site.github} target="_blank" rel="noopener noreferrer">
+              <a href={site.github} target="_blank" rel="noopener noreferrer" className={styles.accentLink}>
                 GitHub
               </a>
-              <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className={styles.accentLink}>
                 LinkedIn
               </a>
-              <a href={`mailto:${site.email}`}>Email</a>
+              <a href={`mailto:${site.email}`} className={styles.accentLink}>Email</a>
             </div>
           </div>
 

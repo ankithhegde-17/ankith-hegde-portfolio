@@ -76,8 +76,9 @@
 .formFooter {
   margin-top: 28px;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 24px;
   border-top: 2px solid var(--color-divider);
   padding-top: 24px;

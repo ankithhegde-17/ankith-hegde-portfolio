@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:5173/\" -UseBasicParsing -TimeoutSec 3; \"UP: $\\($r.StatusCode\\)\" } catch { \"DOWN\" })"
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:5173/\" -UseBasicParsing -TimeoutSec 3; \"UP: $\\($r.StatusCode\\)\" } catch { \"DOWN\" })",
+      "Bash(git add *)",
+      "Bash(git stash *)",
+      "Bash(git pull *)",
+      "Bash(git push *)"
     ]
   }
 }

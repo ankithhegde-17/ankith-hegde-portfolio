@@ -50,16 +50,16 @@ export function Journey({ onOpenCertificate }: JourneyProps) {
                 <div className={styles.mobileYear}>{item.year}</div>
                 <div className={styles.itemTitle}>{item.title}</div>
                 {item.detail && <div className={styles.itemDetail}>{item.detail}</div>}
-              </div>
-              <div className={styles.itemMeta}>
-                <span className="tag tag-outline" style={{ whiteSpace: "nowrap" }}>
-                  {item.kind}
-                </span>
-                {item.certId && (
-                  <button className={styles.certBtn} onClick={() => onOpenCertificate(item.certId!)}>
-                    Certificate
-                  </button>
-                )}
+                <div className={styles.itemMeta}>
+                  <span className={styles.kindLabel} style={{ whiteSpace: "nowrap" }}>
+                    {item.kind}
+                  </span>
+                  {item.certId && (
+                    <button className={styles.certBtn} onClick={() => onOpenCertificate(item.certId!)}>
+                      Certificate
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           );

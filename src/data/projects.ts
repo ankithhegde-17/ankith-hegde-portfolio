@@ -12,7 +12,7 @@ export const featuredProjects: FeaturedProject[] = [
     image: "/assets/memoir-cover.png",
     imageAlt: "Memoir project cover",
     caseStudyId: "memoir",
-    links: { github: "https://github.com/ankithhegde-17/Memoir" },
+    links: { liveDisabled: true, github: "https://github.com/ankithhegde-17/Memoir" },
   },
   {
     number: "02",
@@ -26,7 +26,7 @@ export const featuredProjects: FeaturedProject[] = [
     caseStudyId: "discoverbuddy",
     imageFirst: true,
     links: {
-      live: "https://www.discoverbuddy.in/",
+      live: "https://discoverbuddy.vercel.app/",
       github: "https://github.com/ankithhegde-17/discoverbuddy",
     },
   },

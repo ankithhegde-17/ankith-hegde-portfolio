@@ -14,7 +14,7 @@ export function About() {
             “How can this be both beautifully designed and genuinely useful?”
           </Reveal>
           <Reveal as="p" index={1} className={styles.paragraph}>
-            I'm a 3rd-year AI &amp; Data Science engineering student at Maharaja Institute of Technology Mysuru,
+            I'm a 3rd-year AI &amp; Data Science engineering student at Maharaja Institute of Technology Thandavapura,
             passionate about building digital products where engineering meets thoughtful design.
           </Reveal>
           <Reveal as="p" index={2} className={styles.paragraph}>

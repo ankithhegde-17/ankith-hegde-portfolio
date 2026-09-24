@@ -17,7 +17,7 @@
   justify-content: space-between;
   gap: 24px;
   height: 60px;
-  padding: 0 20px;
+  padding: 0 16px;
   background: color-mix(in srgb, var(--color-bg) 74%, transparent);
   backdrop-filter: blur(20px) saturate(1.6);
   -webkit-backdrop-filter: blur(20px) saturate(1.6);
@@ -41,8 +41,7 @@
 }
 .brandRole {
   font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: color-mix(in srgb, var(--color-text) 50%, transparent);
   white-space: nowrap;
 }
@@ -75,9 +74,17 @@
 
 .themeToggle {
   margin-left: 8px;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  padding: 8px 12px;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.themeToggle:hover {
+  background: color-mix(in srgb, var(--color-text) 6%, transparent);
 }
 
 .navToggle {

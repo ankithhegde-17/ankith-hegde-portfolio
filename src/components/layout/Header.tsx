@@ -42,7 +42,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
               </a>
             ))}
           </div>
-          <button onClick={onToggleTheme} className={`btn btn-secondary ${styles.themeToggle}`}>
+          <button onClick={onToggleTheme} className={styles.themeToggle}>
             {theme === "dark" ? "Light" : "Dark"}
           </button>
           <button

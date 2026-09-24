@@ -48,7 +48,7 @@ export const education = {
   degree: "Bachelor of Engineering, Artificial Intelligence & Data Science",
   detail: "Currently in the third year.",
   institution: "Maharaja Institute of Technology",
-  location: "Mysuru",
+  location: "Thandavapura",
 };
 
 export const contactRows = [
