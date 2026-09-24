@@ -92,14 +92,21 @@
 .socials {
   margin-top: 32px;
   display: flex;
-  gap: 28px;
+  flex-wrap: wrap;
+  gap: 10px;
   font-size: 13px;
   letter-spacing: 0.02em;
 }
 .socialLink {
   color: var(--color-text);
-  border-bottom: 2px solid var(--color-divider);
-  padding-bottom: 3px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md, 6px);
+  padding: 8px 16px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.socialLink:hover {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
 }
 
 .portraitCol {
@@ -124,15 +131,16 @@
 
 .stats {
   border-top: 2px solid var(--color-divider);
+  border-bottom: 2px solid var(--color-divider);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  background: var(--color-surface);
 }
 .stat {
   padding: 24px;
   border-right: 2px solid var(--color-divider);
 }
-.stat:first-child { padding-left: 0; }
-.stat:last-child { padding-right: 0; border-right: none; }
+.stat:last-child { border-right: none; }
 .statValue {
   font-family: var(--font-heading);
   font-weight: 800;

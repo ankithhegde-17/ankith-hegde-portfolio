@@ -29,7 +29,7 @@ export function BeyondCode({ onOpenGallery }: BeyondCodeProps) {
               <figcaption className={styles.caption}>
                 <strong style={{ fontFamily: "var(--font-heading)" }}>{entry.title}</strong> {entry.description}
               </figcaption>
-              <button onClick={() => onOpenGallery(entry.galleryId)} className={styles.viewMoreBtn}>
+              <button onClick={() => onOpenGallery(entry.galleryId)} className={`btn-text ${styles.viewMoreBtn}`}>
                 View more
               </button>
             </figure>

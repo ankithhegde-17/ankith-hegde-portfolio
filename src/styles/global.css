@@ -87,6 +87,27 @@ section[id] { scroll-margin-top: 104px; }
 .btn-icon { width: 36px; height: 36px; padding: 0; }
 .btn-block { width: 100%; margin-top: var(--space-2); justify-content: flex-start; text-align: left; }
 
+/* Secondary text-link action, e.g. "View more" — one shared style so it reads
+   as the same control everywhere it appears. */
+.btn-text {
+  appearance: none;
+  display: inline-block;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--color-accent);
+  padding: 0 0 3px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  transition: color 0.15s;
+}
+.btn-text:hover { color: var(--color-accent); }
+
 /* — forms — */
 .field > label {
   display: block; font-size: 12px; margin-bottom: 5px;

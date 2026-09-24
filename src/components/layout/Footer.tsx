@@ -42,6 +42,7 @@ export function Footer() {
           </div>
 
           <div className={styles.toTopCol}>
+            <div className={styles.colHeading}>Navigate</div>
             <button onClick={toTop} className={`btn btn-secondary ${styles.toTopBtn}`}>
               Back to top ↑
             </button>

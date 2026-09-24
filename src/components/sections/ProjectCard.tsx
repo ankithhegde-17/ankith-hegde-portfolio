@@ -33,7 +33,7 @@ export function ProjectCard({ project, onViewMore, index }: ProjectCardProps) {
           ))}
         </div>
         <div className={styles.actions}>
-          <button onClick={() => onViewMore(project.caseStudyId)} className={styles.viewMoreBtn}>
+          <button onClick={() => onViewMore(project.caseStudyId)} className="btn-text">
             View more
           </button>
           {project.links.live && (

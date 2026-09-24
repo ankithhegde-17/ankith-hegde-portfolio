@@ -46,9 +46,8 @@
   grid-column: span 3;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-start;
-  padding-right: 40px;
 }
 .toTopBtn {
   font-size: 12px;
@@ -72,5 +71,5 @@
   .inner { padding: 48px 20px 24px; }
   .grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
   .brand { grid-column: span 2; }
-  .toTopCol { grid-column: span 2; align-items: flex-start; padding-right: 0; }
+  .toTopCol { grid-column: span 2; align-items: flex-start; }
 }

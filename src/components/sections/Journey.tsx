@@ -57,6 +57,7 @@ export function Journey({ onOpenCertificate }: JourneyProps) {
                   {item.certId && (
                     <button className={styles.certBtn} onClick={() => onOpenCertificate(item.certId!)}>
                       Certificate
+                      <span aria-hidden="true">↗</span>
                     </button>
                   )}
                 </div>

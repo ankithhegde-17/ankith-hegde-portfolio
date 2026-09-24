@@ -71,8 +71,7 @@
 }
 .metaText {
   font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: color-mix(in srgb, var(--color-text) 55%, transparent);
 }
 .metaAccent {
@@ -104,20 +103,6 @@
   display: flex;
   align-items: center;
   gap: 24px;
-}
-.viewMoreBtn {
-  appearance: none;
-  background: transparent;
-  border: 0;
-  border-bottom: 2px solid var(--color-accent);
-  padding: 0 0 3px;
-  cursor: pointer;
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text);
 }
 .linkOut {
   color: var(--color-text);
