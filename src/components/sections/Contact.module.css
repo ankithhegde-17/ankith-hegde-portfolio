@@ -1,116 +1,149 @@
 .section {
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 40px;
+  background: color-mix(in srgb, var(--yellow) 36%, var(--cream));
+  color: var(--ink);
+  --color-bg: #fff9eb;
+  --color-surface: #fff;
+  --color-text: #111;
+  --color-divider: #c7b15e;
+  --color-muted: #514a2e;
+  --color-accent: #57418a;
 }
 .container {
-  border-top: 2px solid var(--color-divider);
-  padding: 96px 0;
+  max-width: 1440px;
+  margin: auto;
+  padding: var(--section-space) var(--gutter);
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 32px;
-}
-.header {
-  grid-column: span 5;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 90px);
 }
 .eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 700;
+  font: 400 11px var(--font-mono);
+  letter-spacing: 0.08em;
+  margin-bottom: 28px;
 }
 .header h2 {
-  font-size: clamp(36px, 4.4vw, 58px);
-  line-height: 1;
-  letter-spacing: -0.035em;
-  margin: 20px 0 0;
-  max-width: 12ch;
+  font-size: clamp(43px, 4.8vw, 69px);
+  line-height: 1.03;
+  letter-spacing: -0.055em;
 }
-.header p {
-  margin: 24px 0 0;
-  max-width: 40ch;
-  font-size: 17px;
-  line-height: 1.65;
-  color: color-mix(in srgb, var(--color-text) 75%, transparent);
+.header > p {
+  font-size: 14px;
+  max-width: 360px;
+  line-height: 1.9;
+  margin: 28px 0;
 }
 .contactList {
-  margin-top: 40px;
-  border-top: 2px solid var(--color-divider);
+  margin-top: 38px;
 }
 .contactRow {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--color-divider);
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 15px;
-}
-.contactList > .contactRow:last-child {
-  border-bottom: none;
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  gap: 15px;
+  padding: 12px 0;
+  border-top: 1px solid #b9a14a;
 }
 .contactLabel {
-  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  font: 500 10px/2 var(--font-mono);
+  text-transform: uppercase;
 }
 .contactValue {
-  text-align: right;
+  font-size: 14px;
+  overflow-wrap: anywhere;
 }
-
+.contactValue a {
+  text-decoration: none;
+}
+.contactValue a:hover {
+  text-decoration: underline;
+}
+.resume {
+  margin-top: 20px;
+}
 .formCol {
-  grid-column: span 7;
-  border: 2px solid var(--color-divider);
-  padding: 40px;
+  border: var(--border);
+  box-shadow: 7px 7px 0 var(--ink);
+  padding: 32px;
+  background: var(--color-surface);
+  align-self: start;
 }
-.formCol label {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text);
+.formCol h3 {
+  font-size: 24px;
+  margin-bottom: 25px;
 }
 .formGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 20px;
+}
+.formGrid > .field:last-child {
+  grid-column: 1/-1;
 }
 .messageField {
-  margin-top: 24px;
+  margin-top: 20px;
+}
+.formCol input,
+.formCol textarea {
+  border-color: #b2ad9e;
+  background: #fffef9;
+  min-height: 50px;
+  font-size: 16px;
+}
+.formCol textarea {
+  min-height: 150px;
 }
 .formFooter {
-  margin-top: 28px;
   display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 24px;
-  border-top: 2px solid var(--color-divider);
-  padding-top: 24px;
-  flex-wrap: wrap;
+  margin-top: 22px;
 }
-.footerNote {
-  font-size: 13px;
-  line-height: 1.5;
-  color: color-mix(in srgb, var(--color-text) 55%, transparent);
-  max-width: 38ch;
+.formFooter button {
+  width: 100%;
 }
 .errorText {
-  color: var(--color-accent-700);
   font-size: 12px;
-  margin-top: 4px;
+  color: #a21b1b;
+  margin-top: 7px;
 }
 .statusMessage {
-  margin-top: 16px;
+  margin-top: 20px;
+  border: 1px solid #397241;
+  background: #e2f1d9;
+  color: #214825;
+  padding: 15px;
   font-size: 13px;
-  color: var(--color-accent-700);
-  border-top: 1px solid var(--color-divider);
-  padding-top: 16px;
 }
-
-@media (max-width: 900px) {
-  .section { padding: 0 20px; }
-  .container { padding: 64px 0; grid-template-columns: 1fr; gap: 40px; }
-  .header, .formCol { grid-column: 1; }
-  .formCol { padding: 16px; }
-  .formCol label { margin-bottom: 3px; }
-  .formGrid { grid-template-columns: 1fr; gap: 12px; }
-  .messageField { margin-top: 12px; }
-  .messageField textarea { height: 90px; }
-  .formFooter { flex-direction: column; align-items: stretch; margin-top: 16px; padding-top: 12px; gap: 10px; }
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.formCol :global(.field):last-child {
+  grid-column: 1/-1;
+}
+@media (max-width: 1000px) {
+  .container {
+    gap: 45px;
+  }
+  .formCol {
+    padding: 24px;
+  }
+}
+@media (max-width: 760px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .header h2 {
+    font-size: 48px;
+  }
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  .contactList {
+    margin-top: 24px;
+  }
+  .formCol {
+    padding: 22px;
+  }
 }

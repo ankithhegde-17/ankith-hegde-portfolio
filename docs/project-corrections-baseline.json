@@ -1,0 +1,127 @@
+[
+  {
+    "number": "01",
+    "kicker": "Career guidance platform · Live",
+    "title": "ResumeLens",
+    "description": "An explainable AI resume analyzer and career-guidance platform.",
+    "tags": [
+      "AI",
+      "Career guidance"
+    ],
+    "image": "/assets/memoir-cover.png",
+    "imageAlt": "ResumeLens project cover",
+    "caseStudyId": "resumelens",
+    "status": "Live",
+    "caseStudy": true,
+    "links": {
+      "live": "https://resumelens.prayogmanch.in"
+    }
+  },
+  {
+    "number": "02",
+    "kicker": "Personal Life Companion · 2026 · In Development",
+    "title": "Memoir",
+    "description": "An offline-first digital life companion that helps people remember their experiences, reflect on their journey, and grow one day at a time.",
+    "tags": [
+      "React",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "PWA"
+    ],
+    "image": "/assets/memoir-cover.png",
+    "imageAlt": "Memoir project cover",
+    "caseStudyId": "memoir",
+    "status": "In Progress",
+    "caseStudy": true,
+    "links": {
+      "github": "https://github.com/ankithhegde-17/Memoir"
+    }
+  },
+  {
+    "number": "03",
+    "kicker": "Platform · 2026 · In Development",
+    "title": "DiscoverBuddy",
+    "description": "A student-led travel platform connecting travelers with local student guides for more authentic, personalized city experiences.",
+    "tags": [
+      "React",
+      "Firebase",
+      "Tailwind CSS",
+      "Mapbox",
+      "Framer Motion"
+    ],
+    "image": "/assets/discoverbuddy-cover.png",
+    "imageAlt": "DiscoverBuddy project cover",
+    "caseStudyId": "discoverbuddy",
+    "imageFirst": true,
+    "status": "In Progress",
+    "caseStudy": true,
+    "links": {
+      "live": "https://discoverbuddy.vercel.app/",
+      "github": "https://github.com/ankithhegde-17/discoverbuddy"
+    }
+  },
+  {
+    "number": "04",
+    "kicker": "AI / IoT · 2026 · Prototype",
+    "title": "EcoSort",
+    "description": "An AI-powered smart waste management ecosystem that uses computer vision, IoT and automation to intelligently segregate waste at source and optimise municipal waste collection.",
+    "tags": [
+      "TensorFlow Lite",
+      "Raspberry Pi",
+      "ESP32-CAM",
+      "IoT",
+      "GPS"
+    ],
+    "image": "/assets/ecosort-cover.png",
+    "imageAlt": "EcoSort project cover",
+    "caseStudyId": "ecosort",
+    "links": {
+      "github": "https://github.com/ankithhegde-17/quicksort"
+    },
+    "status": "Prototype",
+    "caseStudy": true
+  },
+  {
+    "number": "05",
+    "kicker": "EdTech · Collaboration platform · 2026",
+    "title": "TeamForge",
+    "description": "An all-in-one student collaboration platform connecting students, ideas, teams, and hackathon organizers.",
+    "tags": [
+      "EdTech",
+      "Collaboration"
+    ],
+    "image": "/assets/discoverbuddy-cover.png",
+    "imageAlt": "TeamForge project cover",
+    "caseStudyId": "teamforge",
+    "status": "In Progress",
+    "links": {
+      "github": "https://github.com/ankithhegde-17/TeamForge"
+    }
+  },
+  {
+    "number": "06",
+    "title": "Campus Unify",
+    "subtitle": "ONE PLATFORM. MULTIPLE CAMPUSES.",
+    "kicker": "Full-stack / Enterprise ERP · HackMITTEN 2026",
+    "description": "A multi-campus ERP platform that unifies institutional administration, role-based access, student management, and fee workflows into one digital workspace.",
+    "tags": [
+      "React",
+      "Node.js",
+      "Express",
+      "Supabase",
+      "Razorpay · Test mode"
+    ],
+    "image": "/assets/campus-unify-cover.png",
+    "imageAlt": "Campus Unify trust-management dashboard showing campus operations, fees, students and reports using fictional demo data",
+    "imageCaption": "Repository demo dashboard · fictional records · local persistence",
+    "caseStudyId": "campus-unify",
+    "status": "Prototype",
+    "featured": true,
+    "caseStudy": true,
+    "links": {
+      "live": "https://campus-unify-lac.vercel.app/",
+      "github": "https://github.com/ankithhegde-17/campus-unify"
+    }
+  }
+]

@@ -5,22 +5,16 @@ export const experience: ExperienceEntry[] = [
   {
     title: "Machine Learning & Deep Learning Intern",
     org: "AIQuantum Smart Solutions Pvt. Ltd. · 19 Aug — 18 Sept 2025",
-    description:
-      "Completed an internship focused on Machine Learning and Deep Learning using Python, gaining hands-on experience in building neural networks and predictive models. Also explored image processing and visual data analysis under the guidance of Dr. Shyam Lal, Associate Professor at NIT Surathkal.",
+    description: ["Completed a focused Machine Learning and Deep Learning internship using Python.", "Built exposure to neural networks, predictive models, image processing and visual data analysis."],
   },
   {
     title: "Technical Head",
     org: "WINGS of MITT Aero Club",
-    description: "Leadership, technical initiatives, workshops and engineering activities.",
-  },
-  {
-    title: "Drone Workshop Organizer",
-    org: "WINGS of MITT Aero Club · 18 December 2025",
-    description: "Organized the club's drone workshop.",
+    description: ["Lead technical initiatives, workshops and engineering activities for the club.", "Organized the club's drone workshop in December 2025."],
   },
   {
     title: "Technical Team Member",
     org: "E-Cell MITT",
-    description: "Technical team of E-Cell MITT.",
+    description: ["Contribute as a member of the E-Cell MITT technical team."],
   },
 ];

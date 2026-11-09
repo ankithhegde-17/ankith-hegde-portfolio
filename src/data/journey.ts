@@ -1,7 +1,8 @@
+import { completedCourses, communityExperiences, hackathonHighlights } from "./beyondTheCode";
 import type { JourneyItem } from "@/types";
 
 // Ported verbatim from Portfolio Concept.dc.html's `journey` array (built via the `mk` helper).
-export const journey: JourneyItem[] = [
+const originalJourney: JourneyItem[] = [
   { year: "Aug 2026", title: "Claude 101 Workshop", detail: "Outskill · 12 August 2026", kind: "Certification", big: false, certId: "claude-101-outskill" },
   { year: "Jun 2026", title: "Munde Banni", detail: "SJCE Mysuru · 6 June 2026", kind: "Event", big: false },
   { year: "May 2026", title: "Google Cloud Career Launchpad", detail: "Cloud Engineer Track · 20 May 2026", kind: "Certification", big: true, certId: "gc-launchpad" },
@@ -17,5 +18,46 @@ export const journey: JourneyItem[] = [
   { year: "Aug 2025", title: "ML & Deep Learning Internship", detail: "AIQuantum Smart Solutions Pvt. Ltd. · 19 Aug — 18 Sept 2025", kind: "Internship", big: true },
   { year: "Aug 2025", title: "Sigma Ideathon — Second Place", detail: "21 August 2025", kind: "Competition", big: true, certId: "sigma-ideathon" },
   { year: "Oct 2024", title: "Aero Modelling Workshop", detail: "Nitte Meenakshi Institute of Technology, Bengaluru · October 2024", kind: "Workshop", big: false },
-  { year: "2024", title: "Started B.E. in AI & Data Science", detail: "Maharaja Institute of Technology Thandavapura", kind: "Milestone", big: true },
+  { year: "2024", title: "Started B.E. in Computer Science Engineering", detail: "Artificial Intelligence & Data Science specialization · Maharaja Institute of Technology Thandavapura", kind: "Milestone", big: true },
+];
+
+const hackathons: JourneyItem[] = hackathonHighlights.map((item) => ({
+  year: item.date ? "Oct 2026" : "Date not listed",
+  title: item.title,
+  detail: [item.badge, item.scope, item.date, item.team, item.venue].filter(Boolean).join(" · "),
+  project: item.project,
+  kind: "Hackathon",
+  big: true,
+}));
+
+const events: JourneyItem[] = [...communityExperiences].reverse().map((item) => ({
+  year: "Oct 2026",
+  title: item.title,
+  detail: [item.date, item.role, item.location].filter(Boolean).join(" · "),
+  kind: "Event",
+  big: false,
+}));
+
+const courses: JourneyItem[] = completedCourses.filter((course) =>
+  !["google-cloud-career-launchpad", "aiquantum-summer-internship"].includes(course.id),
+).map((course) => ({
+  year: course.id === "udemy-full-stack-bootcamp" ? "Jan 2026" : "Oct 2026",
+  title: course.title,
+  detail: [course.platform, course.issuingInstitution, course.completionDate].filter(Boolean).join(" · "),
+  kind: "Certification",
+  big: false,
+  certId: course.id,
+}));
+
+export const journey: JourneyItem[] = [
+  ...hackathons.filter((item) => item.year === "Oct 2026"),
+  ...courses.filter((item) => item.year === "Oct 2026"),
+  ...events,
+  ...originalJourney.flatMap((item) => [
+    ...(item.title === "IUCEE IASF 2026" ? courses.filter((course) => course.year === "Jan 2026") : []),
+    item.title === "ML & Deep Learning Internship"
+      ? { ...item, certId: "aiquantum-summer-internship" }
+      : item,
+  ]),
+  ...hackathons.filter((item) => item.year === "Date not listed"),
 ];

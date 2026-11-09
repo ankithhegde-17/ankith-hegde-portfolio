@@ -28,6 +28,7 @@ export function CertificatePdfPage({ src }: CertificatePdfPageProps) {
   const frameRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [error, setError] = useState(false);
+  const [rendered, setRendered] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -41,7 +42,8 @@ export function CertificatePdfPage({ src }: CertificatePdfPageProps) {
       const canvas = canvasRef.current;
       if (!frame || !canvas) return;
 
-      const { width: frameWidth, height: frameHeight } = frame.getBoundingClientRect();
+      const { width: frameWidth, height: frameHeight } =
+        frame.getBoundingClientRect();
       if (frameWidth === 0 || frameHeight === 0) return;
 
       try {
@@ -55,7 +57,10 @@ export function CertificatePdfPage({ src }: CertificatePdfPageProps) {
         if (cancelled || myGeneration !== generation) return;
 
         const baseViewport = page.getViewport({ scale: 1 });
-        const fitScale = Math.min(frameWidth / baseViewport.width, frameHeight / baseViewport.height);
+        const fitScale = Math.min(
+          frameWidth / baseViewport.width,
+          frameHeight / baseViewport.height,
+        );
         // Cap DPR: uncapped 3x devices can push canvas allocation past mobile
         // Safari's canvas memory limits, causing a silent render failure.
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -70,8 +75,13 @@ export function CertificatePdfPage({ src }: CertificatePdfPageProps) {
         renderTask?.cancel();
         renderTask = page.render({ canvas, viewport });
         await renderTask.promise;
+        if (!cancelled && myGeneration === generation) setRendered(true);
       } catch (err) {
-        if (!cancelled && myGeneration === generation && !(err instanceof Error && err.name === "RenderingCancelledException")) {
+        if (
+          !cancelled &&
+          myGeneration === generation &&
+          !(err instanceof Error && err.name === "RenderingCancelledException")
+        ) {
           console.error("Certificate PDF render failed:", err);
           setError(true);
         }
@@ -92,9 +102,24 @@ export function CertificatePdfPage({ src }: CertificatePdfPageProps) {
   return (
     <div ref={frameRef} className={styles.pdfFrame}>
       {error ? (
-        <div className={styles.pending}>Certificate preview couldn't be loaded.</div>
+        <div className={styles.pending}>
+          Certificate preview couldn't be loaded.
+        </div>
       ) : (
-        <canvas ref={canvasRef} className={styles.pdfCanvas} />
+        <>
+          {!rendered && (
+            <div role="status" className={styles.pdfLoading}>
+              Rendering certificate preview…
+            </div>
+          )}
+          <canvas
+            ref={canvasRef}
+            role="img"
+            aria-label="Certificate preview"
+            aria-busy={!rendered}
+            className={styles.pdfCanvas}
+          />
+        </>
       )}
     </div>
   );

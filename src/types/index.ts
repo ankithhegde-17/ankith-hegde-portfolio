@@ -42,6 +42,8 @@ export interface CaseStudy {
   pillars: CaseStudyPillar[] | null;
   outcome: string;
   stack: string;
+  overview?: string;
+  roleHeading?: string;
 }
 
 export interface GalleryImage {
@@ -63,13 +65,19 @@ export interface JourneyItem {
   kind: string;
   big: boolean;
   certId?: string;
+  project?: { title: string; href: string } | null;
 }
 
 export interface FeaturedProject {
   number: string;
   kicker: string;
   title: string;
+  subtitle?: string;
+  featured?: boolean;
+  imageCaption?: string;
   description: string;
+  overview?: string;
+  context?: string;
   tags: string[];
   image: string;
   imageAlt: string;
@@ -80,12 +88,14 @@ export interface FeaturedProject {
     github?: string;
   };
   imageFirst?: boolean;
+  status: "Shipped" | "Live" | "Prototype" | "In Progress";
+  caseStudy?: boolean;
 }
 
 export interface ExperienceEntry {
   title: string;
   org: string;
-  description: string;
+  description: string[];
 }
 
 export interface SkillCategory {

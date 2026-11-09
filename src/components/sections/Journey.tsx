@@ -1,70 +1,57 @@
 import { journey } from "@/data/journey";
 import styles from "./Journey.module.css";
-
-interface JourneyProps {
-  onOpenCertificate: (certId: string) => void;
-}
-
-export function Journey({ onOpenCertificate }: JourneyProps) {
+export function Journey({
+  onOpenCertificate,
+}: {
+  onOpenCertificate: (id: string) => void;
+}) {
   return (
-    <section id="journey" data-screen-label="Journey" className={styles.section}>
+    <section id="journey" className={styles.section}>
       <div className={styles.inner}>
-        <div className={styles.headerRow}>
+        <div className={styles.header}>
           <div>
-            <div className={styles.kicker}>06 — Journey of Growth</div>
-            <h2 className={styles.heading}>Every milestone, along the way.</h2>
+            <div className={styles.kicker}>06 / THE CHANGELOG</div>
+            <h2>A journey, still unfolding.</h2>
           </div>
-          <div className={styles.legend}>
-            <span className={styles.legendItem}>
-              <span className={styles.legendDotFilled} />
-              Milestone
-            </span>
-            <span className={styles.legendItem}>
-              <span className={styles.legendDotOutline} />
-              Step
-            </span>
-          </div>
+          <span className={styles.label}>2024 → 2026</span>
         </div>
-
-        <div className={styles.topRule} />
-
-        {journey.map((item, i) => {
-          const dotSize = item.big ? 14 : 10;
-          const isLast = i === journey.length - 1;
-          return (
-            <div key={`${item.year}-${item.title}`} className={styles.item}>
-              <div className={styles.year}>{item.year}</div>
-              <div className={styles.dotCol}>
-                {!isLast && <div className={styles.dotLine} />}
-                <div
-                  className={styles.dot}
-                  style={{
-                    width: dotSize,
-                    height: dotSize,
-                    background: item.big ? "var(--color-accent)" : "var(--color-bg)",
-                    border: `2px solid ${item.big ? "var(--color-accent)" : "var(--color-divider)"}`,
-                  }}
-                />
-              </div>
-              <div>
-                <div className={styles.mobileYear}>{item.year}</div>
-                <div className={styles.itemTitle}>{item.title}</div>
-                {item.detail && <div className={styles.itemDetail}>{item.detail}</div>}
-                <div className={styles.itemMeta}>
-                  <span className={styles.kindLabel} style={{ whiteSpace: "nowrap" }}>
-                    {item.kind}
-                  </span>
+        <p className={styles.intro}>
+          Every milestone, along the way. Courses, competitions, communities,
+          and experiences beyond the classroom.
+        </p>
+        <details className={styles.details}>
+          <summary>
+            Explore the full journey{" "}
+            <span>
+              {journey.length} ENTRIES <b aria-hidden="true">+</b>
+            </span>
+          </summary>
+          <div className={styles.timeline}>
+            {journey.map((item) => (
+              <article key={item.year + item.title} className={styles.item}>
+                <div className={styles.year}>{item.year}</div>
+                <div className={styles.copy}>
+                  <span className={styles.kind}>{item.kind}</span>
+                  <h3>{item.title}</h3>
+                  {item.detail && <p>{item.detail}</p>}
+                  {item.project && (
+                    <a className="btn-text" href={item.project.href}>
+                      Explore {item.project.title} <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
                   {item.certId && (
-                    <button className={styles.certBtn} onClick={() => onOpenCertificate(item.certId!)}>
-                      Certificate
-                      <span aria-hidden="true">↗</span>
+                    <button
+                      className="btn-text"
+                      onClick={() => onOpenCertificate(item.certId!)}
+                    >
+                      View certificate ↗
                     </button>
                   )}
                 </div>
-              </div>
-            </div>
-          );
-        })}
+              </article>
+            ))}
+          </div>
+        </details>
       </div>
     </section>
   );

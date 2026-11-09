@@ -1,25 +1,40 @@
 import { featuredProjects } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import styles from "./FeaturedProjects.module.css";
-
-interface FeaturedProjectsProps {
-  onViewCaseStudy: (caseStudyId: string) => void;
-}
-
-export function FeaturedProjects({ onViewCaseStudy }: FeaturedProjectsProps) {
+export function FeaturedProjects() {
   return (
-    <section id="work" data-screen-label="Featured Projects" className={styles.section}>
+    <section id="projects" className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.headerRow}>
           <div>
-            <div className={styles.kicker}>04 — Featured Projects</div>
-            <h2 className={styles.heading}>Three flagship projects.</h2>
+            <div className={styles.kicker}>01 / SELECTED WORK</div>
+            <h2 className={styles.heading}>
+              Ideas into <span>working software.</span>
+            </h2>
           </div>
+          <p className={styles.intro}>
+            Product thinking. Technical exploration.
+            <br />A selection of what I’m building and learning.
+          </p>
         </div>
-
-        {featuredProjects.map((project, i) => (
-          <ProjectCard key={project.caseStudyId} project={project} onViewMore={onViewCaseStudy} index={i} />
-        ))}
+        <div className={styles.projects}>
+          {featuredProjects.map((project) => (
+            <ProjectCard
+              key={project.caseStudyId}
+              project={project}
+            />
+          ))}
+        </div>
+        <div className={styles.endnote}>
+          <span>FROM WEB APPLICATIONS TO CONNECTED HARDWARE</span>
+          <a
+            href="https://github.com/ankithhegde-17"
+            target="_blank"
+            rel="noreferrer"
+          >
+            More on GitHub ↗
+          </a>
+        </div>
       </div>
     </section>
   );

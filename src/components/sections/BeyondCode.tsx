@@ -1,38 +1,39 @@
-import { beyondCode } from "@/data/beyondCode";
+import { optimizedImage } from "@/lib/assets";
+import { galleries } from "@/data/galleries";
 import styles from "./BeyondCode.module.css";
 
 interface BeyondCodeProps {
   onOpenGallery: (galleryId: string) => void;
 }
 
+const gallery = galleries["travel-adventure"];
+const featuredPhotos = [galleries.travel.images[0], galleries.adventure.images[0]];
+
 export function BeyondCode({ onOpenGallery }: BeyondCodeProps) {
   return (
-    <section data-screen-label="Beyond Code" className={styles.section}>
+    <section
+      id="beyond-code"
+      aria-labelledby="travel-adventure-title"
+      className={styles.section}
+    >
       <div className={styles.inner}>
-        <div className={styles.headerRow}>
-          <div>
-            <div className={styles.kicker}>08 — Beyond Code</div>
-            <h2 className={styles.heading}>The rest of it.</h2>
-          </div>
+        <div className={styles.copy}>
+          <p className={styles.kicker}>07 / A PERSONAL PHOTO JOURNAL</p>
+          <h2 id="travel-adventure-title">Travel & Adventure</h2>
+          <p>{gallery.description}</p>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => onOpenGallery(gallery.id)}
+          >
+            View Travel & Adventure gallery ↗
+          </button>
         </div>
-        <div className={styles.grid}>
-          {beyondCode.map((entry) => (
-            <figure key={entry.galleryId}>
-              <div className={styles.imageFrame}>
-                <img
-                  src={entry.image}
-                  alt={entry.imageAlt}
-                  className={styles.image}
-                  style={{ objectFit: entry.imageFit, objectPosition: entry.objectPosition ?? "50% 50%" }}
-                />
-              </div>
-              <figcaption className={styles.caption}>
-                <strong style={{ fontFamily: "var(--font-heading)" }}>{entry.title}</strong> {entry.description}
-              </figcaption>
-              <button onClick={() => onOpenGallery(entry.galleryId)} className={`btn-text ${styles.viewMoreBtn}`}>
-                View more
-              </button>
-            </figure>
+        <div className={styles.photos}>
+          {featuredPhotos.map((photo) => (
+            <div className={styles.imageFrame} key={photo.src}>
+              <img src={optimizedImage(photo.src)} alt={photo.alt} loading="lazy" decoding="async" />
+            </div>
           ))}
         </div>
       </div>

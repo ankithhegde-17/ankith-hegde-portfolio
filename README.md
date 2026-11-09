@@ -55,12 +55,15 @@ The main focus of the project was to create a clean and professional user interf
 The portfolio showcases selected projects including:
 
 ### Memoir
+
 A project developed as part of my portfolio of software projects.
 
 ### DiscoverBuddy
+
 A student-focused platform project focused on connecting students and enabling collaborative opportunities.
 
 ### EcoSort
+
 An IoT-oriented project focused on automated waste segregation.
 
 ---
@@ -127,3 +130,13 @@ The production website is available at:
 git clone <YOUR-GITHUB-REPOSITORY-URL>
 cd <PROJECT-FOLDER>
 npm install
+
+```
+
+## Portfolio V2 local development
+
+Run `npm install` if dependencies are missing, then `npm run dev`. Keep the existing local `.env` for the Supabase contact integration. Run `npm run build` for a production build and TypeScript checks, then `npm run preview` to inspect it.
+
+Development URL: **http://127.0.0.1:5173/**. The dev command uses this explicit loopback address and strict port setting. Start it in your normal local terminal; a server launched inside an isolated execution environment may not be reachable by the desktop browser.
+
+The complete redesign audit, preservation checklist, file inventory, verification results, and limitations are in [docs/REDESIGN.md](docs/REDESIGN.md). Browser evidence and reports are generated under `output/playwright/`. No deployment or push was performed.

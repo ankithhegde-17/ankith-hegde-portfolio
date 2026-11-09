@@ -5,14 +5,19 @@ import { useEffect, useState } from "react";
  * ported from Portfolio Concept.dc.html's markActiveSection().
  */
 export function useScrollSpy(ids: string[], offset = 140): string {
-  const [active, setActive] = useState(ids[0] ?? "");
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const markActive = () => {
-      let current = ids[0] ?? "";
+      let current = "";
+      let nearestTop = -Infinity;
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= offset) current = id;
+        const top = el?.getBoundingClientRect().top;
+        if (top !== undefined && top <= offset && top > nearestTop) {
+          current = id;
+          nearestTop = top;
+        }
       }
       setActive(current);
     };

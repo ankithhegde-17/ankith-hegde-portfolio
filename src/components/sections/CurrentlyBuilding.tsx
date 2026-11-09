@@ -19,12 +19,22 @@ export function CurrentlyBuilding({ onViewMore }: CurrentlyBuildingProps) {
               <div>
                 <div className={styles.projectTitle}>{teamForge.title}</div>
                 <div className={styles.projectMeta}>{teamForge.meta}</div>
-                <div className={styles.projectDescription}>{teamForge.description}</div>
+                <div className={styles.projectDescription}>
+                  {teamForge.description}
+                </div>
                 <div className={styles.actions}>
-                  <button onClick={() => onViewMore(teamForge.caseStudyId)} className={styles.viewMoreBtn}>
+                  <button
+                    onClick={() => onViewMore(teamForge.caseStudyId)}
+                    className={styles.viewMoreBtn}
+                  >
                     View more
                   </button>
-                  <a href={teamForge.github} target="_blank" rel="noopener noreferrer" className={styles.githubLink}>
+                  <a
+                    href={teamForge.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.githubLink}
+                  >
                     GitHub
                   </a>
                 </div>

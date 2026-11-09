@@ -1,28 +1,21 @@
 import { education } from "@/data/site";
 import styles from "./Education.module.css";
-
 export function Education() {
   return (
-    <section data-screen-label="Education" className={styles.section}>
+    <section id="education" className={styles.section}>
       <div className={styles.inner}>
+        <div className={styles.kicker}>EDUCATION / CURRENT BUILD</div>
         <div className={styles.grid}>
-          <div className={styles.kickerCol}>
-            <div className={styles.kicker}>02 — Education</div>
+          <div className={styles.years}>{education.years}</div>
+          <div>
+            <h2>{education.degree}</h2>
+            <p>{education.institution}</p>
+            <span>{education.detail}</span>
+            {education.location && <p>{education.location}</p>}
           </div>
-          <div className={styles.contentCol}>
-            <div className={styles.row}>
-              <div className={styles.years}>{education.years}</div>
-              <div>
-                <div className={styles.degree}>{education.degree}</div>
-                <div className={styles.detail}>{education.detail}</div>
-              </div>
-              <div className={styles.institution}>
-                {education.institution}
-                <br />
-                {education.location}
-              </div>
-            </div>
-          </div>
+          <span className={styles.mark} aria-hidden="true">
+            ↗
+          </span>
         </div>
       </div>
     </section>

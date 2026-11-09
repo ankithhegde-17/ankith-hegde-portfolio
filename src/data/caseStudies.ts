@@ -39,7 +39,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     outcome:
       "Memoir is being developed as a polished, installable Progressive Web App designed to become a long-term personal life companion.",
-    stack: "React · TypeScript · Vite · Tailwind CSS · Framer Motion · Supabase · PostgreSQL · Dexie.js · PWA · Vercel",
+    stack:
+      "React · TypeScript · Vite · Tailwind CSS · Framer Motion · Supabase · PostgreSQL · Dexie.js · PWA · Vercel",
   },
   discoverbuddy: {
     id: "discoverbuddy",
@@ -55,10 +56,22 @@ export const caseStudies: Record<string, CaseStudy> = {
     features: null,
     featureBullets: null,
     featureRows: [
-      { name: "Student Guide Discovery", text: "Find local students who can guide travelers around their city." },
-      { name: "Guide Profiles", text: "View information about guides and their local knowledge before choosing an experience." },
-      { name: "Location-Based Discovery", text: "Explore places and experiences through an interactive map." },
-      { name: "Traveler & Guide Experience", text: "Separate flows designed around the needs of travelers and student guides." },
+      {
+        name: "Student Guide Discovery",
+        text: "Find local students who can guide travelers around their city.",
+      },
+      {
+        name: "Guide Profiles",
+        text: "View information about guides and their local knowledge before choosing an experience.",
+      },
+      {
+        name: "Location-Based Discovery",
+        text: "Explore places and experiences through an interactive map.",
+      },
+      {
+        name: "Traveler & Guide Experience",
+        text: "Separate flows designed around the needs of travelers and student guides.",
+      },
     ],
     role: "I worked across the entire product — from defining the concept and user experience to designing and developing the platform. My contributions included product strategy, UX/UI design, frontend development, backend architecture, integration of location-based features, and deployment.",
     challenge:
@@ -68,7 +81,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     pillars: null,
     outcome:
       "A functional DiscoverBuddy prototype was developed with the core product experience and technical foundation in place. The project established the initial product direction, user flows, visual system, and architecture needed to test the concept with real travelers and student guides. The next step is to pilot the platform in Mysuru, gather feedback from both sides of the marketplace, and refine the experience based on real usage.",
-    stack: "React · Firebase · Tailwind CSS · Mapbox · Framer Motion · GitHub · Netlify",
+    stack:
+      "React · Firebase · Tailwind CSS · Mapbox · Framer Motion · GitHub · Netlify",
   },
   ecosort: {
     id: "ecosort",
@@ -98,7 +112,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     pillars: null,
     outcome:
       "EcoSort developed into a complete AI-powered waste management concept rather than a standalone smart dustbin. The proposed ecosystem combines AI-based classification, automatic segregation, IoT monitoring, GPS-based collection optimisation, a citizen application and a municipal dashboard. The project was developed as part of the National Entrepreneurship Challenge (NEC) 2026 at E-Cell IIT Bombay, with the next steps including a technical trial at Maharaja Institute of Technology Thandavapura, a municipal pilot and tender-ready documentation.",
-    stack: "TensorFlow Lite · Raspberry Pi · ESP32-CAM · Ultrasonic Sensors · IoT · GPS · Computer Vision · Cloud Platform · Municipal Dashboard · Citizen Mobile App · Servo Actuation",
+    stack:
+      "TensorFlow Lite · Raspberry Pi · ESP32-CAM · Ultrasonic Sensors · IoT · GPS · Computer Vision · Cloud Platform · Municipal Dashboard · Citizen Mobile App · Servo Actuation",
   },
   teamforge: {
     id: "teamforge",
@@ -114,14 +129,38 @@ export const caseStudies: Record<string, CaseStudy> = {
     features: null,
     featureBullets: null,
     featureRows: [
-      { name: "Teammate Discovery", text: "Find students based on skills, interests, and project requirements." },
-      { name: "Project & Startup Ideas", text: "Post ideas, receive feedback, and allow interested students to join." },
-      { name: "Hackathon Management", text: "Create hackathons and manage registrations, teams, and participants." },
-      { name: "Online Evaluation", text: "Judges and organizers can evaluate projects and assign scores directly through the platform." },
-      { name: "Student Profiles", text: "Showcase skills, interests, projects, achievements, and hackathon experience." },
-      { name: "Team Formation", text: "Create teams, invite members, and collaborate around projects." },
-      { name: "Cross-College Collaboration", text: "Connect with students beyond your own institution." },
-      { name: "Centralized Platform", text: "Bring students, teams, projects, startup ideas, hackathons, and evaluations into one ecosystem." },
+      {
+        name: "Teammate Discovery",
+        text: "Find students based on skills, interests, and project requirements.",
+      },
+      {
+        name: "Project & Startup Ideas",
+        text: "Post ideas, receive feedback, and allow interested students to join.",
+      },
+      {
+        name: "Hackathon Management",
+        text: "Create hackathons and manage registrations, teams, and participants.",
+      },
+      {
+        name: "Online Evaluation",
+        text: "Judges and organizers can evaluate projects and assign scores directly through the platform.",
+      },
+      {
+        name: "Student Profiles",
+        text: "Showcase skills, interests, projects, achievements, and hackathon experience.",
+      },
+      {
+        name: "Team Formation",
+        text: "Create teams, invite members, and collaborate around projects.",
+      },
+      {
+        name: "Cross-College Collaboration",
+        text: "Connect with students beyond your own institution.",
+      },
+      {
+        name: "Centralized Platform",
+        text: "Bring students, teams, projects, startup ideas, hackathons, and evaluations into one ecosystem.",
+      },
     ],
     role: "Product Design · UI/UX · Frontend Development · Product Architecture. I am responsible for conceptualizing the product, defining the user experience, designing the interface, and developing the platform.",
     challenge:
@@ -132,5 +171,75 @@ export const caseStudies: Record<string, CaseStudy> = {
     outcome:
       "Currently in development. The platform is being built as a unified collaboration ecosystem for students and hackathon organizers, with the long-term goal of becoming a single destination for discovering teammates, building projects, developing startup ideas, participating in hackathons, and evaluating projects.",
     stack: "React · Next.js · TypeScript · Tailwind CSS · Firebase · Node.js",
+  },
+  "campus-unify": {
+    id: "campus-unify",
+    title: "Campus Unify",
+    meta: "Unified Multi-Campus Enterprise Resource Planning System · Team PsyNex · HackMITTEN 2026",
+    overview:
+      "Campus Unify is a full-stack, role-based Enterprise Resource Planning (ERP) platform designed to centralize academic administration across multiple campuses. It brings student management, faculty administration, departmental operations, access control, and fee management into one unified digital workspace. Developed during HackMITTEN 2026, it explores a centralized approach to institutional management through role-specific dashboards and shared administrative workflows.",
+    problem:
+      "Educational institutions operating across multiple campuses often depend on disconnected spreadsheets and administrative tools. Fragmented student and faculty information can lead to duplicate records, inconsistent information, limited cross-campus visibility, complex permission management, inefficient communication between departments, and difficulty tracking pending student fees.",
+    solution:
+      "A centralized, multi-campus ERP workspace that gives each stakeholder the information and operations relevant to their assigned permissions. The platform brings institutional dashboards, campus administration, student and faculty records, departmental operations, and fee workflows together.",
+    quote: "One platform. Multiple campuses.",
+    solutionAfter:
+      "The engineering focus is full-stack application architecture, REST API integration, authentication and authorization, data modeling, and complex administrative interfaces.",
+    features: null,
+    featureBullets: null,
+    featureRows: [
+      {
+        name: "Multi-campus management",
+        text: "A shared interface for campus information, institutional visibility, and scoped operations across educational campuses.",
+      },
+      {
+        name: "Role-based access",
+        text: "Role-specific workspaces for trust management, system and campus administrators, heads of departments, faculty, students, parents, and operational stakeholders. Express checks action, campus, department, and field permissions before returning data or applying changes.",
+      },
+      {
+        name: "Student management",
+        text: "Student identities, admission registration and confirmation, academic and administrative records, and reviewed transfers with role-scoped access.",
+      },
+      {
+        name: "Faculty and department management",
+        text: "Staff appointments, departmental organization, HOD designation, teaching assignments, and access changes following transfers or separation.",
+      },
+      {
+        name: "Fee management",
+        text: "Campus fee rules, charges, pending balances, concessions, payment references, receipts, and reviewed reversal workflows in the prototype.",
+      },
+      {
+        name: "Razorpay test-mode workflow",
+        text: "The repository includes client checkout, server-side order creation, and payment-signature verification code. Presented as a test-mode integration; live payment processing and automatic reconciliation were not verified.",
+      },
+      {
+        name: "Administrative dashboards",
+        text: "Role-specific dashboards, campus filters, directory search, and permission-scoped reports. The repository screenshot uses fictional demonstration records.",
+      },
+    ],
+    roleHeading: "Team & hackathon context",
+    role: "Built collaboratively by Team PsyNex during HackMITTEN 2026 — a 24-hour national-level hackathon at Maharaja Institute of Technology, Thandavapura. The project reflects team-based rapid prototyping across full-stack development and multi-role interface design.",
+    challenge:
+      "The central engineering challenge is coordinating multiple stakeholder roles and campus scopes without exposing unrelated records, while keeping student, faculty, departmental, and fee workflows understandable. Within a hackathon timeframe, storage boundaries and demonstration data also need to remain explicit.",
+    approach:
+      "The React/Vite frontend calls an authenticated Express REST API. The backend verifies the session and active account, applies action, scope and field access checks, then runs domain validation. In demo mode, changes are serialized and persisted through an atomic replacement of a private local JSON file. A separate Supabase adapter supports Auth and protected PostgreSQL JSONB workspace storage, private document storage, and revision-checked writes. This is a prototype persistence model; a fully normalized production ERP database and live Supabase deployment were not verified.",
+    pillars: [
+      {
+        name: "Access boundary",
+        text: "Authentication and server-side role, campus, department, and field checks precede operational responses.",
+      },
+      {
+        name: "Operational workflows",
+        text: "Shared student identities connect campus administration, admissions, staff, and fee-related actions.",
+      },
+      {
+        name: "Persistence boundary",
+        text: "Private local JSON for the demo; a separate protected Supabase JSONB adapter for configured environments.",
+      },
+    ],
+    outcome:
+      "A team-built enterprise-software prototype with an accessible live sign-in interface and repository implementation of role-based administrative workflows. Demo records are fictional. The case study distinguishes implemented integration code from verified deployment behavior; no production customers, performance results, live financial transactions, or reconciliation outcomes are claimed.",
+    stack:
+      "React · Vite · JavaScript · HTML · CSS · Node.js · Express · REST APIs · Supabase Auth · PostgreSQL / JSONB adapter · Razorpay (test mode) · Vercel · Git · GitHub",
   },
 };

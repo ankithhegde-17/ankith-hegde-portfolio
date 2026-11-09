@@ -1,43 +1,66 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useTheme } from "@/hooks/useTheme";
-import { useLoadingIntro } from "@/hooks/useLoadingIntro";
-import { certificates } from "@/data/certificates";
-import { caseStudies } from "@/data/caseStudies";
-import { galleries } from "@/data/galleries";
 
-import { LoadingIntro } from "@/components/layout/LoadingIntro";
+import { certificates } from "@/data/certificates";
+import { completedCourses } from "@/data/beyondTheCode";
+import { galleries } from "@/data/galleries";
+import type { Certificate } from "@/types";
+
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CertificateModal } from "@/components/modals/CertificateModal";
-import { CaseStudyModal } from "@/components/modals/CaseStudyModal";
+const CertificateModal = lazy(() =>
+  import("@/components/modals/CertificateModal").then((m) => ({
+    default: m.CertificateModal,
+  })),
+);
 import { GalleryModal } from "@/components/modals/GalleryModal";
 
+import { Journey } from "@/components/sections/Journey";
+import { BeyondCode } from "@/components/sections/BeyondCode";
+import { BeyondTheCode } from "@/components/sections/BeyondTheCode";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Education } from "@/components/sections/Education";
 import { Skills } from "@/components/sections/Skills";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
 import { Experience } from "@/components/sections/Experience";
-import { Journey } from "@/components/sections/Journey";
-import { CurrentlyBuilding } from "@/components/sections/CurrentlyBuilding";
-import { BeyondCode } from "@/components/sections/BeyondCode";
 import { Contact } from "@/components/sections/Contact";
+import { Achievements } from "@/components/sections/Achievements";
+import { ProjectPage } from "@/components/ProjectPage";
 
 import styles from "./App.module.css";
 
 export default function App() {
   const [theme, toggleTheme] = useTheme();
-  const { loading, pct } = useLoadingIntro();
 
   const [certId, setCertId] = useState<string | null>(null);
-  const [studyId, setStudyId] = useState<string | null>(null);
   const [galleryId, setGalleryId] = useState<string | null>(null);
+  const mainRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const main = mainRef.current;
+    if (!main || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add(styles.sectionHeadingEntered);
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: 0.25 });
+
+    for (const section of main.querySelectorAll(":scope > section:not(#home)")) {
+      const heading = section.querySelector("h2");
+      if (heading) observer.observe(heading);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const onEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setCertId(null);
-        setStudyId(null);
         setGalleryId(null);
       }
     };
@@ -59,31 +82,73 @@ export default function App() {
     document.documentElement.style.scrollBehavior = prevBehavior;
   }, []);
 
-  const activeCertificate = certId ? certificates[certId] : null;
-  const activeCaseStudy = studyId ? caseStudies[studyId] : null;
+  const activeCourse = completedCourses.find((course) => course.id === certId);
+  const activeCertificate: Certificate | null = activeCourse
+    ? {
+        id: activeCourse.id,
+        title: activeCourse.title,
+        subtitle: activeCourse.platform,
+        issuer: activeCourse.issuingInstitution,
+        date: activeCourse.completionDate ?? "",
+        type: "Course certificate",
+        certificate: activeCourse.certificatePdf,
+        previewImage: activeCourse.certificateImage,
+        credentialId: activeCourse.credentialId,
+        verifyUrl: activeCourse.verificationUrl,
+      }
+    : certId
+      ? certificates[certId] ?? null
+      : null;
   const activeGallery = galleryId ? galleries[galleryId] : null;
+  const projectSlug = window.location.pathname.match(
+    /^\/projects\/([^/]+)$/,
+  )?.[1];
+
+  if (projectSlug) return <ProjectPage slug={projectSlug} />;
 
   return (
     <>
-      {loading && <LoadingIntro pct={pct} />}
+      {activeCertificate && (
+        <Suspense
+          fallback={
+            <div role="status" className="modal-loading">
+              Loading certificate…
+            </div>
+          }
+        >
+          <CertificateModal
+            key={activeCertificate.id}
+            certificate={activeCertificate}
+            onClose={() => setCertId(null)}
+          />
+        </Suspense>
+      )}
+      {activeGallery && (
+        <GalleryModal
+          gallery={activeGallery}
+          onClose={() => setGalleryId(null)}
+        />
+      )}
 
-      {activeCertificate && <CertificateModal certificate={activeCertificate} onClose={() => setCertId(null)} />}
-      {activeCaseStudy && <CaseStudyModal study={activeCaseStudy} onClose={() => setStudyId(null)} />}
-      {activeGallery && <GalleryModal gallery={activeGallery} onClose={() => setGalleryId(null)} />}
-
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Header theme={theme} onToggleTheme={toggleTheme} />
 
       <div className={styles.page}>
-        <Hero />
-        <About />
-        <Education />
-        <Skills />
-        <FeaturedProjects onViewCaseStudy={setStudyId} />
-        <Experience />
-        <Journey onOpenCertificate={setCertId} />
-        <CurrentlyBuilding onViewMore={setStudyId} />
-        <BeyondCode onOpenGallery={setGalleryId} />
-        <Contact />
+        <main id="main" tabIndex={-1} ref={mainRef}>
+          <Hero />
+          <FeaturedProjects />
+          <Skills />
+          <About />
+          <Experience />
+          <Education />
+          <Achievements />
+          <Journey onOpenCertificate={setCertId} />
+          <BeyondTheCode onOpenCertificate={setCertId} />
+          <BeyondCode onOpenGallery={setGalleryId} />
+          <Contact />
+        </main>
         <Footer />
       </div>
     </>

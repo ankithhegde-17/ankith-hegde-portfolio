@@ -7,7 +7,7 @@ import styles from "./Contact.module.css";
 interface FormState {
   name: string;
   email: string;
-  phone: string;
+  company: string;
   subject: string;
   message: string;
 }
@@ -15,7 +15,7 @@ interface FormState {
 const initialForm: FormState = {
   name: "",
   email: "",
-  phone: "",
+  company: "",
   subject: "",
   message: "",
 };
@@ -77,24 +77,24 @@ export function Contact() {
     setValidated(false);
 
     if (!validate()) {
+      window.requestAnimationFrame(() =>
+        document.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus(),
+      );
       return;
     }
 
     setSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke(
-        "send-contact-email",
-        {
-          body: {
-            name: form.name.trim(),
-            email: form.email.trim(),
-            phone: form.phone.trim(),
-            subject: form.subject.trim() || "Portfolio inquiry",
-            message: form.message.trim(),
-          },
-        }
-      );
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          name: form.name.trim(),
+          email: form.email.trim(),
+          company: form.company.trim(),
+          subject: form.subject.trim() || "Portfolio inquiry",
+          message: form.message.trim(),
+        },
+      });
 
       if (error) {
         console.error("Contact submission error:", error);
@@ -105,8 +105,6 @@ export function Contact() {
 
         return;
       }
-
-      console.log("Contact submission response:", data);
 
       setValidated(true);
       setForm(initialForm);
@@ -126,9 +124,13 @@ export function Contact() {
     <section id="contact" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <div className={styles.eyebrow}>09 — CONTACT</div>
+          <div className={styles.eyebrow}>08 / LET’S CONNECT</div>
 
-          <h2>Let's build something.</h2>
+          <h2>
+            HAVE AN IDEA?
+            <br />
+            LET’S BUILD IT.
+          </h2>
 
           <p>
             Open to internships and collaborations. Send a note and I'll get
@@ -162,16 +164,30 @@ export function Contact() {
               </div>
             ))}
           </div>
+          <a
+            className={styles.resume + " btn btn-secondary"}
+            href="/Ankith_Hegde_Resume.pdf"
+          >
+            Download résumé ↓
+          </a>
         </div>
 
         <div className={styles.formCol}>
-          <form onSubmit={handleSubmit} noValidate>
+          <h3>Send a note ↗</h3>
+          <form onSubmit={handleSubmit} noValidate aria-label="Contact Ankith">
             <div className={styles.formGrid}>
               <div className="field">
                 <label htmlFor="contact-name">Name</label>
 
                 <input
                   id="contact-name"
+                  name="name"
+                  required
+                  aria-invalid={!!errors.name}
+                  aria-describedby={
+                    errors.name ? "contact-name-error" : undefined
+                  }
+                  autoComplete="name"
                   className={`input ${errors.name ? "is-invalid" : ""}`}
                   style={{ height: 48 }}
                   placeholder="Your name"
@@ -180,7 +196,13 @@ export function Contact() {
                 />
 
                 {errors.name && (
-                  <div className={styles.errorText}>{errors.name}</div>
+                  <div
+                    id="contact-name-error"
+                    role="alert"
+                    className={styles.errorText}
+                  >
+                    {errors.name}
+                  </div>
                 )}
               </div>
 
@@ -189,6 +211,13 @@ export function Contact() {
 
                 <input
                   id="contact-email"
+                  name="email"
+                  required
+                  aria-invalid={!!errors.email}
+                  aria-describedby={
+                    errors.email ? "contact-email-error" : undefined
+                  }
+                  autoComplete="email"
                   type="email"
                   className={`input ${errors.email ? "is-invalid" : ""}`}
                   style={{ height: 48 }}
@@ -198,20 +227,24 @@ export function Contact() {
                 />
 
                 {errors.email && (
-                  <div className={styles.errorText}>{errors.email}</div>
+                  <div
+                    id="contact-email-error"
+                    role="alert"
+                    className={styles.errorText}
+                  >
+                    {errors.email}
+                  </div>
                 )}
               </div>
 
-              <div className="field">
-                <label htmlFor="contact-phone">Phone number</label>
-
+              <div className={styles.honeypot} aria-hidden="true">
+                <label htmlFor="contact-company">Company</label>
                 <input
-                  id="contact-phone"
-                  className="input"
-                  style={{ height: 48 }}
-                  placeholder="+91"
-                  value={form.phone}
-                  onChange={update("phone")}
+                  id="contact-company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form.company}
+                  onChange={update("company")}
                 />
               </div>
 
@@ -234,9 +267,13 @@ export function Contact() {
 
               <textarea
                 id="contact-message"
-                className={`input ${
-                  errors.message ? "is-invalid" : ""
-                }`}
+                name="message"
+                required
+                aria-invalid={!!errors.message}
+                aria-describedby={
+                  errors.message ? "contact-message-error" : undefined
+                }
+                className={`input ${errors.message ? "is-invalid" : ""}`}
                 rows={6}
                 placeholder="What would you like to talk about?"
                 style={{ resize: "vertical" }}
@@ -245,15 +282,17 @@ export function Contact() {
               />
 
               {errors.message && (
-                <div className={styles.errorText}>{errors.message}</div>
+                <div
+                  id="contact-message-error"
+                  role="alert"
+                  className={styles.errorText}
+                >
+                  {errors.message}
+                </div>
               )}
             </div>
 
             <div className={styles.formFooter}>
-              <div className={styles.footerNote}>
-                Submissions are stored securely and only used to reply.
-              </div>
-
               <button
                 type="submit"
                 className="btn btn-primary"
@@ -269,9 +308,9 @@ export function Contact() {
             </div>
 
             {validated && (
-              <div className={styles.statusMessage}>
-                Thanks — your message has been sent successfully. I'll get
-                back to you soon.
+              <div role="status" className={styles.statusMessage}>
+                Thanks — your message has been sent successfully. I'll get back
+                to you soon.
               </div>
             )}
           </form>

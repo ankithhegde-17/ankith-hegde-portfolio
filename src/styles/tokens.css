@@ -1,73 +1,65 @@
-/* Modernist — design-system tokens, ported from _ds/modernist-.../styles.css.
-   Light values live on :root; [data-theme="dark"] overrides only the roles
-   the original design actually swapped (see Portfolio Concept.dc.html's
-   renderVals().themeVars). Keep this file and global.css as the single
-   source of visual truth — no hard-coded hex/px outside these tokens. */
-
 :root {
-  --color-bg: #f3f2f2;
-  --color-surface: #eae9e9;
-  --color-text: #201e1d;
-  --color-accent: #ec3013;
-  --color-accent-2: #e15b47;
-  --color-divider: color-mix(in srgb, #201e1d 40%, transparent);
-
-  --color-neutral-100: #f8f4f4;
-  --color-neutral-200: #eae7e7;
-  --color-neutral-300: #d7d3d3;
-  --color-neutral-400: #bab6b6;
-  --color-neutral-500: #9b9797;
-  --color-neutral-600: #7d7979;
-  --color-neutral-700: #605d5d;
-  --color-neutral-800: #444141;
-  --color-neutral-900: #2d2b2b;
-
-  --color-accent-100: #fff2ef;
-  --color-accent-200: #ffe0d9;
-  --color-accent-300: #ffc4b8;
-  --color-accent-400: #ff9783;
-  --color-accent-500: #ff563c;
-  --color-accent-600: #dd2b0f;
-  --color-accent-700: #ae1800;
-  --color-accent-800: #7c1405;
-  --color-accent-900: #4d170e;
-
-  --color-accent-2-100: #fff2ef;
-  --color-accent-2-200: #ffe0da;
-  --color-accent-2-300: #ffc4b9;
-  --color-accent-2-400: #ff9784;
-  --color-accent-2-500: #ef6853;
-  --color-accent-2-600: #c94b39;
-  --color-accent-2-700: #9e3526;
-  --color-accent-2-800: #71261b;
-  --color-accent-2-900: #471d16;
-
-  --font-heading: "Archivo", system-ui, sans-serif;
-  --font-heading-weight: 800;
-  --font-body: "Archivo", system-ui, sans-serif;
-
+  --cream: #fff9eb;
+  --ink: #111;
+  --charcoal: #151515;
+  --yellow: #ffd43b;
+  --cyan: #3dd9eb;
+  --lavender: #bd91ff;
+  --green: #4ade80;
+  --coral: #ff7878;
+  --color-bg: var(--cream);
+  --color-surface: #fff;
+  --color-text: var(--ink);
+  --color-accent: #57418a;
+  --color-accent-600: #463172;
+  --color-accent-700: #342353;
+  --color-divider: #d4cfc1;
+  --color-muted: #5d5b54;
+  --color-neutral-100: #f4f0e6;
+  --color-neutral-800: #292922;
+  --color-neutral-900: #151515;
+  --color-accent-100: #eee2ff;
+  --color-accent-800: #352050;
+  --color-accent-2-100: #d3f5f9;
+  --color-accent-2-800: #133e43;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-heading-weight: 700;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
   --space-6: 24px;
   --space-8: 32px;
-
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-
-  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
-  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
-  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --shadow-sm: 3px 3px 0 var(--ink);
+  --shadow-md: 5px 5px 0 var(--ink);
+  --shadow-lg: 9px 9px 0 var(--ink);
+  --border: 2px solid var(--ink);
+  --content-width: 1240px;
+  --gutter: clamp(22px, 4.5vw, 68px);
+  --section-space: clamp(48px, 7.2vw, 104px);
+  --header-height: 86px;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --motion-fast: 180ms;
 }
-
+@media (max-width: 540px) {
+  :root {
+    --header-height: 72px;
+  }
+}
 [data-theme="dark"] {
-  --color-bg: #181818;
-  --color-surface: #202020;
-  --color-text: #f2f2f2;
-  --color-accent: #ff563c;
-  --color-accent-600: #ff7a64;
-  --color-accent-700: #ffb0a0;
-  --color-divider: #3a3a3a;
+  --color-bg: #22231f;
+  --color-surface: #2c2d27;
+  --color-text: #fff9eb;
+  --color-muted: #c0bfb4;
+  --color-divider: #55564b;
+  --color-accent: #d0b4ff;
+  --color-accent-600: #e2d1ff;
+  --color-accent-700: #e2d1ff;
 }

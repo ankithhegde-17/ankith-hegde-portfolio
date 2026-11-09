@@ -45,3 +45,10 @@ export const galleries: Record<string, Gallery> = {
     ],
   },
 };
+
+galleries["travel-adventure"] = {
+  id: "travel-adventure",
+  title: "Travel & Adventure",
+  description: "A photo journal of places I’ve explored, from city streets to hillside trails.",
+  images: [...galleries.travel.images, ...galleries.adventure.images],
+};

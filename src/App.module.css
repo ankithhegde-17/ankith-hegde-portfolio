@@ -1,8 +1,22 @@
 .page {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
   min-height: 100vh;
-  overflow-x: hidden;
-  padding-top: 88px;
+  padding-top: var(--header-height);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sectionHeadingEntered {
+    animation: section-heading-in 380ms var(--ease-out);
+  }
+
+  @keyframes section-heading-in {
+    from {
+      opacity: 0.82;
+      translate: 0 5px;
+    }
+
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
 }

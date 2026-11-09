@@ -95,9 +95,22 @@
 }
 
 @media (max-width: 900px) {
-  .inner { padding: 64px 20px; }
-  .grid { grid-template-columns: 1fr; gap: 24px; }
-  .kickerCol, .listCol { grid-column: 1; }
-  .row { grid-template-columns: 1fr; gap: 10px; }
-  .status { text-align: left; }
+  .inner {
+    padding: 64px 20px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .kickerCol,
+  .listCol {
+    grid-column: 1;
+  }
+  .row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .status {
+    text-align: left;
+  }
 }

@@ -1,85 +1,108 @@
-import { site, heroStats } from "@/data/site";
-import { Reveal } from "@/components/ui/Reveal";
+import { optimizedImage } from "@/lib/assets";
+import { site } from "@/data/site";
 import styles from "./Hero.module.css";
-
 export function Hero() {
   return (
-    <section id="home" data-screen-label="Hero" className={styles.section}>
-      <div className={styles.grid}>
-        <div className={styles.copy}>
-          <Reveal as="div" index={0} className={styles.badge}>
-            <span className={styles.badgeDot} />
-            Open to internships &amp; collaborations
-          </Reveal>
-
-          <Reveal as="div" index={1} className={styles.hello}>
-            Hello, I'm
-          </Reveal>
-
-          <Reveal as="h1" index={2} className={styles.name}>
-            {site.name.split(" ")[0]}
-            <br />
-            {site.name.split(" ").slice(1).join(" ")}
-          </Reveal>
-
-          <Reveal as="div" index={3} className={styles.roleRow}>
-            <span className={styles.roleRule} />
-            <div className={styles.roleText}>
-              {site.tagline}
-              <div className={styles.roleSub}>{site.subtagline}</div>
-            </div>
-          </Reveal>
-
-          <Reveal as="p" index={4} className={styles.lede}>
-            Building digital products where engineering, thoughtful design, and real-world impact come together.
-          </Reveal>
-
-          <Reveal as="div" index={5} className={styles.ctas}>
-            <a href="#work" className={`btn btn-primary ${styles.ctaBtn}`}>
-              View Projects
-            </a>
-            <a
-              href="/resume.pdf"
-              download
-              className={`btn btn-secondary ${styles.ctaBtn}`}
-            >
-              Download Resume
-            </a>
-          </Reveal>
-
-          <Reveal as="div" index={0} className={styles.socials}>
-            <a href={site.github} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-              GitHub
-            </a>
-            <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-              LinkedIn
-            </a>
-            <a href={`mailto:${site.email}`} className={styles.socialLink}>
-              Email
-            </a>
-          </Reveal>
+    <section id="home" className={styles.section}>
+      <div className={styles.inner}>
+        <div className={styles.topline}>
+          <span>Software Development × AI &amp; Data Science Engineering</span>
+          <span className={styles.availability}>
+            <i /> Open to internships
+          </span>
         </div>
-
-        <div className={styles.portraitCol}>
-          <div className={`grayscale ${styles.portraitFrame}`}>
-            <img
-              src="/assets/ankith-portrait.png"
-              alt="Portrait of Ankith Hegde"
-              width={1240}
-              height={1550}
-              className={styles.portraitImg}
-            />
+        <div className={styles.grid}>
+          <div className={styles.copy}>
+            <div className={styles.hello}>Hello, world. I’m</div>
+            <h1 className={styles.name}>
+              ANKITH
+              <br />
+              HEGDE<span>.</span>
+            </h1>
+            <p className={styles.tagline}>BUILD. BREAK. DEBUG. REPEAT.</p>
+            <p className={styles.lede}>
+              AI &amp; Data Science Engineering student turning practical ideas into usable software.
+              Exploring the intersection of{" "}
+              <strong>AI, data, and thoughtful product development.</strong>
+            </p>
+            <div className={styles.ctas}>
+              <a href="#projects" className="btn btn-primary">
+                Explore work <span aria-hidden="true">↘</span>
+              </a>
+              <a href="#about" className="btn btn-secondary">
+                About me <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div className={styles.socials}>
+              <a href={site.github} target="_blank" rel="noreferrer">
+                GitHub ↗
+              </a>
+              <a href={site.linkedin} target="_blank" rel="noreferrer">
+                LinkedIn ↗
+              </a>
+              <a href="/Ankith_Hegde_Resume.pdf" download>
+                Résumé ↓
+              </a>
+              <a href={"mailto:" + site.email}>Email ↗</a>
+            </div>
           </div>
+          <div className={styles.art}>
+            <div className={styles.orbit} aria-hidden="true" />
+            <div className={styles.portraitCard}>
+              <div className={styles.cardBar}>
+                <span>
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span>ankith / in real life</span>
+                <span>↗</span>
+              </div>
+              <img
+                src={optimizedImage("/assets/ankith-portrait.png")}
+                alt="Ankith Hegde"
+                width="1240"
+                height="1550"
+              />
+              <div className={styles.cardCaption}>
+                <strong>Always a work in progress.</strong>
+                <span>MYSURU, INDIA · {site.role}</span>
+              </div>
+            </div>
+            <span className={styles.codeSticker} aria-hidden="true">
+              &lt;/&gt;<small>BUILD WITH INTENT</small>
+            </span>
+            <span className={styles.reactSticker} aria-hidden="true">
+              ✳ <span>React</span>
+            </span>
+            <span className={styles.pythonSticker} aria-hidden="true">
+              Python ↗
+            </span>
+            <span className={styles.note} aria-hidden="true">
+              Curiosity is
+              <br />
+              the starting point.<span>↖</span>
+            </span>
+          </div>
+        </div>
+        <div className={styles.bottom}>
+          <span>
+            B.E. AI & Data Science <b>/</b> Class of 2028
+          </span>
+          <a href="#projects">
+            Scroll to explore <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </div>
-
-      <div className={styles.stats}>
-        {heroStats.map((stat) => (
-          <div key={stat.label} className={styles.stat}>
-            <div className={styles.statValue}>{stat.value}</div>
-            <div className={styles.statLabel}>{stat.label}</div>
-          </div>
-        ))}
+      <div className={styles.strip} aria-hidden="true">
+        <span>SOFTWARE DEVELOPMENT</span>
+        <b>✳</b>
+        <span>AI & DATA SCIENCE</span>
+        <b>✳</b>
+        <span>THOUGHTFUL PRODUCTS</span>
+        <b>✳</b>
+        <span>ALWAYS LEARNING</span>
+        <b>✳</b>
       </div>
     </section>
   );

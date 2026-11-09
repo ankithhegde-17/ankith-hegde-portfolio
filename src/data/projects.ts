@@ -1,21 +1,73 @@
 import type { FeaturedProject } from "@/types";
 
-// Ported verbatim from Portfolio Concept.dc.html's "Featured Projects" section.
-export const featuredProjects: FeaturedProject[] = [
-  {
-    number: "01",
-    kicker: "Personal Life Companion · 2026 · In Development",
-    title: "Memoir",
+// The same explicit sequence drives cards, detail navigation, and numbering.
+export const projectOrder = [
+  "campus-unify",
+  "resumelens",
+  "hr-signal-ai",
+  "discoverbuddy",
+  "ecosort",
+] as const;
+type ProjectId = (typeof projectOrder)[number];
+
+const projectCatalog: Record<ProjectId, Omit<FeaturedProject, "number">> = {
+  "campus-unify": {
+    title: "Campus Unify",
+    subtitle: "ONE PLATFORM. MULTIPLE CAMPUSES.",
+    kicker: "Full-stack / Enterprise ERP · HackMITTEN 2026",
     description:
-      "An offline-first digital life companion that helps people remember their experiences, reflect on their journey, and grow one day at a time.",
-    tags: ["React", "TypeScript", "Supabase", "PostgreSQL", "PWA"],
-    image: "/assets/memoir-cover.png",
-    imageAlt: "Memoir project cover",
-    caseStudyId: "memoir",
-    links: { liveDisabled: true, github: "https://github.com/ankithhegde-17/Memoir" },
+      "A multi-campus ERP platform that unifies institutional administration, role-based access, student management, and fee workflows into one digital workspace.",
+    tags: ["React", "Node.js", "Express", "Supabase", "Razorpay · Test mode"],
+    image: "/assets/campus-unify-cover.png",
+    imageAlt:
+      "Campus Unify trust-management dashboard showing campus operations, fees, students and reports using fictional demo data",
+    imageCaption:
+      "Repository demo dashboard · fictional records · local persistence",
+    caseStudyId: "campus-unify",
+    status: "Prototype",
+    featured: true,
+    caseStudy: true,
+    links: {
+      live: "https://met.prayogmanch.in",
+      github: "https://github.com/ankithhegde-17/campus-unify",
+    },
   },
-  {
-    number: "02",
+  resumelens: {
+    kicker: "Career guidance platform · Live",
+    title: "ResumeLens",
+    description:
+      "An explainable AI resume analyzer and career-guidance platform.",
+    tags: ["AI", "Career guidance"],
+    image: "/assets/resumelens-dashboard.png",
+    imageAlt: "ResumeLens dashboard showing the navy workspace sidebar, Hello, explorer heading, and résumé analysis options",
+    caseStudyId: "resumelens",
+    status: "Live",
+    caseStudy: true,
+    links: {
+      live: "https://resumelens.prayogmanch.in/",
+    },
+  },
+  "hr-signal-ai": {
+    title: "HR Signal AI",
+    kicker: "HR Management / Web Application · Build Bengaluru Hackathon",
+    description:
+      "HR Signal AI is a web application developed during the Build Bengaluru Hackathon to explore centralized human resource management and simplify administrative HR workflows.",
+    overview:
+      "Developed as part of the Build Bengaluru Hackathon, HR Signal AI focuses on helping HR teams organize and manage workforce-related activities through a centralized digital interface.",
+    context:
+      "The project was presented during the final rounds at the Microsoft office in Bengaluru. The team was selected for the final rounds of the Build Bengaluru Hackathon.",
+    tags: [],
+    image: "/assets/hr-signal-cover.png",
+    imageAlt:
+      "HR Signal AI public sign-in interface with invitation-only account access",
+    imageCaption:
+      "Actual public sign-in interface · account access requires an invitation",
+    caseStudyId: "hr-signal-ai",
+    status: "Prototype",
+    caseStudy: true,
+    links: { live: "https://6b02442f8d6b47bd8a5c24bdb79e69ef.prod.enter.pro" },
+  },
+  discoverbuddy: {
     kicker: "Platform · 2026 · In Development",
     title: "DiscoverBuddy",
     description:
@@ -25,13 +77,14 @@ export const featuredProjects: FeaturedProject[] = [
     imageAlt: "DiscoverBuddy project cover",
     caseStudyId: "discoverbuddy",
     imageFirst: true,
+    status: "In Progress",
+    caseStudy: true,
     links: {
       live: "https://discoverbuddy.vercel.app/",
       github: "https://github.com/ankithhegde-17/discoverbuddy",
     },
   },
-  {
-    number: "03",
+  ecosort: {
     kicker: "AI / IoT · 2026 · Prototype",
     title: "EcoSort",
     description:
@@ -41,8 +94,16 @@ export const featuredProjects: FeaturedProject[] = [
     imageAlt: "EcoSort project cover",
     caseStudyId: "ecosort",
     links: {
-      liveDisabled: true,
       github: "https://github.com/ankithhegde-17/quicksort",
     },
+    status: "Prototype",
+    caseStudy: true,
   },
-];
+};
+
+export const featuredProjects: FeaturedProject[] = projectOrder.map(
+  (id, index) => ({
+    ...projectCatalog[id],
+    number: String(index + 1).padStart(2, "0"),
+  }),
+);

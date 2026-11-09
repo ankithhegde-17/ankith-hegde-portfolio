@@ -3,9 +3,8 @@
 // All external URLs are preserved exactly as exported.
 export const site = {
   name: "Ankith Hegde",
-  role: "AI & Data Science",
-  tagline: "AI & Data Science Engineering Student",
-  subtagline: "Product Builder • Design Enthusiast",
+  role: "AI & Data Science Engineering Student",
+  subtagline: "B.E. Computer Science Engineering (Artificial Intelligence & Data Science) · Maharaja Institute of Technology Thandavapura · Class of 2028",
   email: "ankithhegde001@gmail.com",
   github: "https://github.com/ankithhegde-17",
   githubLabel: "ankithhegde-17",
@@ -16,10 +15,12 @@ export const site = {
 };
 
 export const navLinks = [
-  { href: "#home", label: "Home", id: "home" },
+  { href: "#projects", label: "Projects", id: "projects" },
+  { href: "#experience", label: "Experience", id: "experience" },
+  { href: "#skills", label: "Skills", id: "skills" },
+  { href: "#achievements", label: "Achievements", id: "achievements" },
   { href: "#about", label: "About", id: "about" },
-  { href: "#work", label: "Work", id: "work" },
-  { href: "#journey", label: "Journey", id: "journey" },
+  { href: "#beyond-the-code", label: "Beyond code", id: "beyond-the-code" },
   { href: "#contact", label: "Contact", id: "contact" },
 ];
 
@@ -31,24 +32,24 @@ export const footerSectionLinks = [
 ];
 
 export const heroStats = [
-  { value: "3rd year", label: "B.E. AI & Data Science" },
-  { value: "Mysuru", label: "Karnataka, India" },
-  { value: "Build + design", label: "Where I work" },
-  { value: "Open", label: "Internships & collaborations" },
+  { value: "5", label: "Projects listed" },
+  { value: "4", label: "Competition placements / finals" },
+  { value: "1", label: "ML & DL internship" },
+  { value: "5", label: "Certificates listed" },
 ];
 
 export const aboutInfo = [
   { label: "Focus", value: "AI & Data Science, product engineering, design" },
   { label: "Based in", value: "Mysuru, Karnataka, India" },
-  { label: "Availability", value: "Open to internships & collaborations" },
+  { label: "Looking for", value: "ML / software internship opportunities" },
 ];
 
 export const education = {
-  years: "2024 —",
-  degree: "Bachelor of Engineering, Artificial Intelligence & Data Science",
-  detail: "Currently in the third year.",
-  institution: "Maharaja Institute of Technology",
-  location: "Thandavapura",
+  years: "2024 — 2028 (expected)",
+  degree: "B.E. Computer Science Engineering (Artificial Intelligence & Data Science)",
+  detail: "Visvesvaraya Technological University (VTU)",
+  institution: "Maharaja Institute of Technology Thandavapura",
+  location: "",
 };
 
 export const contactRows = [

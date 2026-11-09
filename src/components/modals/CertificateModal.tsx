@@ -9,7 +9,10 @@ interface CertificateModalProps {
   onClose: () => void;
 }
 
-export function CertificateModal({ certificate: c, onClose }: CertificateModalProps) {
+export function CertificateModal({
+  certificate: c,
+  onClose,
+}: CertificateModalProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
 
@@ -21,11 +24,11 @@ export function CertificateModal({ certificate: c, onClose }: CertificateModalPr
   const credential = c.credentialId
     ? `Credential ID ${c.credentialId}`
     : c.certificate
-    ? "PDF · original file"
-    : "Certificate file pending";
+      ? "PDF · original file"
+      : "Certificate file pending";
 
   return (
-    <Modal onClose={onClose} wide={hasPdf || !!c.previewImage}>
+    <Modal label={c.title} onClose={onClose} wide={hasPdf || !!c.previewImage}>
       <ModalHeader onClose={onClose} ariaLabel="Close certificate">
         <div className={styles.headerText}>
           <div className={styles.kicker}>{c.type}</div>
@@ -37,7 +40,11 @@ export function CertificateModal({ certificate: c, onClose }: CertificateModalPr
       <div className={styles.body}>
         {hasPreviewImage && (
           <div className={styles.previewWrap}>
-            {!imageLoaded && <div className={styles.previewLoading}>Loading certificate preview…</div>}
+            {!imageLoaded && (
+              <div className={styles.previewLoading}>
+                Loading certificate preview…
+              </div>
+            )}
             <img
               className={styles.previewImg}
               src={c.previewImage!}
@@ -79,7 +86,11 @@ export function CertificateModal({ certificate: c, onClose }: CertificateModalPr
             </a>
           )}
           {c.certificate && (
-            <a href={c.certificate} download className={`btn btn-primary ${modalStyles.actionBtn}`}>
+            <a
+              href={c.certificate}
+              download
+              className={`btn btn-primary ${modalStyles.actionBtn}`}
+            >
               Download Certificate
             </a>
           )}

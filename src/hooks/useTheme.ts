@@ -5,8 +5,12 @@ const STORAGE_KEY = "theme";
 
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "light";
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === "light" || stored === "dark") return stored;
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark") return stored;
+  } catch {
+    // Theme switching still works when browser storage is unavailable.
+  }
   return "light";
 }
 
@@ -19,7 +23,11 @@ export function useTheme(): [Theme, () => void] {
     } else {
       document.documentElement.removeAttribute("data-theme");
     }
-    window.localStorage.setItem(STORAGE_KEY, theme);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      // A persistent preference is optional, for example in a restricted browser.
+    }
   }, [theme]);
 
   const toggleTheme = useCallback(() => {

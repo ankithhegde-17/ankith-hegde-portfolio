@@ -14,7 +14,7 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
   const hasKeyFeatures = hasFeatures || hasBullets || hasRows;
 
   return (
-    <Modal onClose={onClose} raised>
+    <Modal label={study.title} onClose={onClose} raised>
       <ModalHeader onClose={onClose} ariaLabel="Close case study">
         <div className={styles.headerText}>
           <div className={styles.kicker}>{study.meta}</div>
@@ -33,7 +33,11 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
           <div>
             <div className={styles.rowText}>{study.solution}</div>
             {study.quote && <div className={styles.quote}>{study.quote}</div>}
-            {study.solutionAfter && <div className={styles.rowText} style={{ marginTop: 18 }}>{study.solutionAfter}</div>}
+            {study.solutionAfter && (
+              <div className={styles.rowText} style={{ marginTop: 18 }}>
+                {study.solutionAfter}
+              </div>
+            )}
           </div>
         </div>
 
@@ -44,7 +48,11 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
               {hasFeatures && (
                 <div className={styles.tagList}>
                   {study.features!.map((feat) => (
-                    <span key={feat} className="tag tag-outline" style={{ whiteSpace: "nowrap" }}>
+                    <span
+                      key={feat}
+                      className="tag tag-outline"
+                      style={{ whiteSpace: "nowrap" }}
+                    >
                       {feat}
                     </span>
                   ))}
@@ -99,7 +107,10 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
 
       <ModalFooter>
         <div className={modalStyles.footerNote}>{study.stack}</div>
-        <button onClick={onClose} className={`btn btn-secondary ${modalStyles.actionBtn}`}>
+        <button
+          onClick={onClose}
+          className={`btn btn-secondary ${modalStyles.actionBtn}`}
+        >
           Close
         </button>
       </ModalFooter>
