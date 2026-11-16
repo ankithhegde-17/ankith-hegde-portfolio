@@ -88,7 +88,7 @@ export interface FeaturedProject {
     github?: string;
   };
   imageFirst?: boolean;
-  status: "Shipped" | "Live" | "Prototype" | "In Progress";
+  status: "Shipped" | "Live" | "Prototype" | "In development";
   caseStudy?: boolean;
 }
 

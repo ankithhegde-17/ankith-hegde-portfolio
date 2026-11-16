@@ -42,6 +42,35 @@ export const caseStudies: Record<string, CaseStudy> = {
     stack:
       "React · TypeScript · Vite · Tailwind CSS · Framer Motion · Supabase · PostgreSQL · Dexie.js · PWA · Vercel",
   },
+  resumelens: {
+    id: "resumelens",
+    title: "ResumeLens",
+    meta: "Résumé analysis and career guidance",
+    problem:
+      "Students and early-career applicants can struggle to tell which skills their résumé demonstrates and which skills to develop for a role.",
+    solution:
+      "ResumeLens gives users a workspace to review detected skills, explore career alignment, and identify practical skills to learn next.",
+    quote: "",
+    solutionAfter:
+      "Users can upload a PDF, JPG, or PNG, or try the workflow with a fictional sample résumé.",
+    features: null,
+    featureBullets: null,
+    featureRows: [
+      { name: "Start with a résumé", text: "Upload a supported file or choose the fictional sample from the overview." },
+      { name: "Review the evidence", text: "The sample flow asks users to review the evidence before generating results. That review step is what makes the guidance explainable in the interface." },
+      { name: "Explore next steps", text: "Use the detected skills and career alignment to explore career paths and skills to learn." },
+    ],
+    roleHeading: "Project context",
+    role: "ResumeLens is a portfolio project focused on AI-assisted résumé review and career exploration.",
+    challenge:
+      "Make career guidance traceable to what the résumé actually shows.",
+    approach:
+      "The workspace presents résumé analysis, career exploration, and version history as separate steps. The dashboard says analysis and progress stay in the current browser for up to 24 hours.",
+    pillars: null,
+    outcome:
+      "The browser-only workspace is temporary. Users are advised to export important results and clear browser data on shared devices.",
+    stack: "",
+  },
   discoverbuddy: {
     id: "discoverbuddy",
     title: "DiscoverBuddy",
@@ -58,15 +87,15 @@ export const caseStudies: Record<string, CaseStudy> = {
     featureRows: [
       {
         name: "Student Guide Discovery",
-        text: "Find local students who can guide travelers around their city.",
+        text: "Designed the discovery flow around finding local student guides.",
       },
       {
         name: "Guide Profiles",
-        text: "View information about guides and their local knowledge before choosing an experience.",
+        text: "The design calls for profiles that introduce guides and their local knowledge.",
       },
       {
         name: "Location-Based Discovery",
-        text: "Explore places and experiences through an interactive map.",
+        text: "Map-based exploration is part of the design.",
       },
       {
         name: "Traveler & Guide Experience",
@@ -80,9 +109,9 @@ export const caseStudies: Record<string, CaseStudy> = {
       "I focused on the core interaction first: discover a local guide → understand the experience → connect with the guide. Instead of trying to build a complete travel ecosystem, I kept the initial product focused on the relationship between travelers and local student guides. The first version targets Mysuru so the concept can be tested within a defined market before expanding to additional cities.",
     pillars: null,
     outcome:
-      "A functional DiscoverBuddy prototype was developed with the core product experience and technical foundation in place. The project established the initial product direction, user flows, visual system, and architecture needed to test the concept with real travelers and student guides. The next step is to pilot the platform in Mysuru, gather feedback from both sides of the marketplace, and refine the experience based on real usage.",
+      "DiscoverBuddy is in development, with a prototype preview hosted on Vercel. Guide onboarding, booking, payments, and map interactions remain unverified. A Mysuru pilot is a proposed next step.",
     stack:
-      "React · Firebase · Tailwind CSS · Mapbox · Framer Motion · GitHub · Netlify",
+      "React · Firebase · Tailwind CSS · Mapbox · Framer Motion · GitHub",
   },
   ecosort: {
     id: "ecosort",

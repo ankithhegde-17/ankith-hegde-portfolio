@@ -1,3 +1,4 @@
+import { Arrow } from "@/components/ui/Arrow";
 import { optimizedImage } from "@/lib/assets";
 import type { FeaturedProject } from "@/types";
 import styles from "./FeaturedProjects.module.css";
@@ -35,7 +36,7 @@ export function ProjectCard({
               </span>
             </div>
             <div className={styles.posterFoot}>
-              PRODUCT EXPLORATION <span>↗</span>
+              PRODUCT EXPLORATION <span><Arrow /></span>
             </div>
           </div>
         ) : (
@@ -52,7 +53,7 @@ export function ProjectCard({
           </div>
         )}
         <span className={styles.imageArrow} aria-hidden="true">
-          ↗
+          <Arrow />
         </span>
         {project.imageCaption && (
           <span className={styles.imageCaption}>{project.imageCaption}</span>
@@ -65,7 +66,7 @@ export function ProjectCard({
           <span className={styles.status}>{project.status}</span>
         </div>
         <h3 className={styles.title}>
-          <a href={"/projects/" + project.caseStudyId}>{project.title}</a>
+          {project.title}
         </h3>
         {project.subtitle && (
           <p className={styles.subtitle}>{project.subtitle}</p>
@@ -84,18 +85,19 @@ export function ProjectCard({
           <a
             href={"/projects/" + project.caseStudyId}
             className={styles.caseLink}
+            aria-label={"Explore project: " + project.title}
           >
-            Explore project <span aria-hidden="true">↗</span>
+            Explore project <span aria-hidden="true"><Arrow /></span>
           </a>
           <div>
             {project.links.live && (
               <a href={project.links.live} target="_blank" rel="noreferrer">
-                {project.featured ? "Live project ↗" : "Live demo ↗"}
+                {project.featured ? "Live project" : "Live demo"} <Arrow />
               </a>
             )}
             {project.links.github && (
               <a href={project.links.github} target="_blank" rel="noreferrer">
-                {project.featured ? "View source ↗" : "GitHub ↗"}
+                {project.featured ? "View source" : "GitHub"} <Arrow />
               </a>
             )}
           </div>

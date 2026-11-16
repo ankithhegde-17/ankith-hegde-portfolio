@@ -1,3 +1,4 @@
+import { Arrow } from "@/components/ui/Arrow";
 import { optimizedImage } from "@/lib/assets";
 import { site } from "@/data/site";
 import styles from "./Hero.module.css";
@@ -21,29 +22,29 @@ export function Hero() {
             </h1>
             <p className={styles.tagline}>BUILD. BREAK. DEBUG. REPEAT.</p>
             <p className={styles.lede}>
-              AI &amp; Data Science Engineering student turning practical ideas into usable software.
-              Exploring the intersection of{" "}
-              <strong>AI, data, and thoughtful product development.</strong>
+              I’m an AI &amp; Data Science engineering student building full-stack
+              products and exploring practical AI. My projects range from
+              multi-campus ERP workflows to career guidance and travel.
             </p>
             <div className={styles.ctas}>
               <a href="#projects" className="btn btn-primary">
-                Explore work <span aria-hidden="true">↘</span>
+                Explore work <span aria-hidden="true"><Arrow direction="downRight" /></span>
               </a>
               <a href="#about" className="btn btn-secondary">
-                About me <span aria-hidden="true">↗</span>
+                About me <span aria-hidden="true"><Arrow /></span>
               </a>
             </div>
             <div className={styles.socials}>
               <a href={site.github} target="_blank" rel="noreferrer">
-                GitHub ↗
+                GitHub <Arrow />
               </a>
               <a href={site.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn ↗
+                LinkedIn <Arrow />
               </a>
               <a href="/Ankith_Hegde_Resume.pdf" download>
-                Résumé ↓
+                Résumé <Arrow direction="down" />
               </a>
-              <a href={"mailto:" + site.email}>Email ↗</a>
+              <a href={"mailto:" + site.email}>Email <Arrow /></a>
             </div>
           </div>
           <div className={styles.art}>
@@ -56,7 +57,7 @@ export function Hero() {
                   <i />
                 </span>
                 <span>ankith / in real life</span>
-                <span>↗</span>
+                <span><Arrow /></span>
               </div>
               <img
                 src={optimizedImage("/assets/ankith-portrait.png")}
@@ -76,7 +77,7 @@ export function Hero() {
               ✳ <span>React</span>
             </span>
             <span className={styles.pythonSticker} aria-hidden="true">
-              Python ↗
+              Python &#8599;
             </span>
             <span className={styles.note} aria-hidden="true">
               Curiosity is
@@ -90,7 +91,7 @@ export function Hero() {
             B.E. AI & Data Science <b>/</b> Class of 2028
           </span>
           <a href="#projects">
-            Scroll to explore <span aria-hidden="true">↓</span>
+            Scroll to explore <span aria-hidden="true"><Arrow direction="down" /></span>
           </a>
         </div>
       </div>

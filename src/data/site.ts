@@ -16,10 +16,10 @@ export const site = {
 
 export const navLinks = [
   { href: "#projects", label: "Projects", id: "projects" },
-  { href: "#experience", label: "Experience", id: "experience" },
   { href: "#skills", label: "Skills", id: "skills" },
-  { href: "#achievements", label: "Achievements", id: "achievements" },
   { href: "#about", label: "About", id: "about" },
+  { href: "#experience", label: "Experience", id: "experience" },
+  { href: "#achievements", label: "Achievements", id: "achievements" },
   { href: "#beyond-the-code", label: "Beyond code", id: "beyond-the-code" },
   { href: "#contact", label: "Contact", id: "contact" },
 ];

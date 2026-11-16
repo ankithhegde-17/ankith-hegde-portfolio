@@ -1,3 +1,4 @@
+import { Arrow } from "@/components/ui/Arrow";
 import { optimizedImage } from "@/lib/assets";
 import { useEffect } from "react";
 import { featuredProjects } from "@/data/projects";
@@ -84,7 +85,7 @@ export function ProjectPage({ slug }: { slug: string }) {
                 rel="noreferrer"
                 href={project.links.live}
               >
-                Live project ↗
+                Live project <Arrow />
               </a>
             )}
             {project.links.github && (
@@ -94,7 +95,7 @@ export function ProjectPage({ slug }: { slug: string }) {
                 rel="noreferrer"
                 href={project.links.github}
               >
-                GitHub ↗
+                GitHub <Arrow />
               </a>
             )}
           </div>
@@ -192,10 +193,12 @@ export function ProjectPage({ slug }: { slug: string }) {
                 <h2>Outcome & next steps</h2>
                 <p>{study.outcome}</p>
               </section>
-              <section>
-                <h2>Technology</h2>
-                <p>{study.stack}</p>
-              </section>
+              {study.stack && (
+                <section>
+                  <h2>Technology</h2>
+                  <p>{study.stack}</p>
+                </section>
+              )}
             </div>
           </div>
         ) : (
@@ -225,14 +228,14 @@ export function ProjectPage({ slug }: { slug: string }) {
               .filter((p) => p.caseStudyId !== slug)
               .map((p) => (
                 <a key={p.caseStudyId} href={"/projects/" + p.caseStudyId}>
-                  {p.title} ↗
+                  {p.title} <Arrow />
                 </a>
               ))}
           </div>
         </nav>
       </article>
       <a href="/#contact" className="btn btn-primary">
-        Let’s talk ↗
+        Let’s talk <Arrow />
       </a>
     </main>
   );

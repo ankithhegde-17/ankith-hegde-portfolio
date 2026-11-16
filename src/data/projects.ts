@@ -33,7 +33,7 @@ const projectCatalog: Record<ProjectId, Omit<FeaturedProject, "number">> = {
     },
   },
   resumelens: {
-    kicker: "Career guidance platform · Live",
+    kicker: "Career guidance platform",
     title: "ResumeLens",
     description:
       "An explainable AI resume analyzer and career-guidance platform.",
@@ -68,7 +68,7 @@ const projectCatalog: Record<ProjectId, Omit<FeaturedProject, "number">> = {
     links: { live: "https://6b02442f8d6b47bd8a5c24bdb79e69ef.prod.enter.pro" },
   },
   discoverbuddy: {
-    kicker: "Platform · 2026 · In Development",
+    kicker: "Travel platform · 2026",
     title: "DiscoverBuddy",
     description:
       "A student-led travel platform connecting travelers with local student guides for more authentic, personalized city experiences.",
@@ -77,7 +77,7 @@ const projectCatalog: Record<ProjectId, Omit<FeaturedProject, "number">> = {
     imageAlt: "DiscoverBuddy project cover",
     caseStudyId: "discoverbuddy",
     imageFirst: true,
-    status: "In Progress",
+    status: "In development",
     caseStudy: true,
     links: {
       live: "https://discoverbuddy.vercel.app/",
@@ -85,7 +85,7 @@ const projectCatalog: Record<ProjectId, Omit<FeaturedProject, "number">> = {
     },
   },
   ecosort: {
-    kicker: "AI / IoT · 2026 · Prototype",
+    kicker: "AI / IoT · 2026",
     title: "EcoSort",
     description:
       "An AI-powered smart waste management ecosystem that uses computer vision, IoT and automation to intelligently segregate waste at source and optimise municipal waste collection.",

@@ -1,3 +1,4 @@
+import { Arrow } from "@/components/ui/Arrow";
 import { useEffect, useRef, useState } from "react";
 import type { Theme } from "@/types";
 import { navLinks } from "@/data/site";
@@ -66,7 +67,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             {theme === "dark" ? "☀" : "◐"}
           </button>
           <a href="#contact" className={styles.contact}>
-            Let’s talk <span aria-hidden="true">↗</span>
+            Let’s talk <span aria-hidden="true"><Arrow /></span>
           </a>
           <button
             ref={toggleRef}
@@ -93,10 +94,10 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true"><Arrow /></span>
             </a>
           ))}
-          <a href="/Ankith_Hegde_Resume.pdf">Download résumé ↗</a>
+          <a href="/Ankith_Hegde_Resume.pdf">Download résumé <Arrow /></a>
         </nav>
       )}
     </header>

@@ -29,6 +29,7 @@ export function Contact() {
   >({});
   const [validated, setValidated] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [deliveryError, setDeliveryError] = useState(false);
 
   const update =
     (field: keyof FormState) =>
@@ -74,6 +75,7 @@ export function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    setDeliveryError(false);
     setValidated(false);
 
     if (!validate()) {
@@ -99,9 +101,7 @@ export function Contact() {
       if (error) {
         console.error("Contact submission error:", error);
 
-        setErrors({
-          message: "Something went wrong. Please try again.",
-        });
+        setDeliveryError(true);
 
         return;
       }
@@ -112,9 +112,7 @@ export function Contact() {
     } catch (error) {
       console.error("Unexpected contact submission error:", error);
 
-      setErrors({
-        message: "Something went wrong. Please try again.",
-      });
+      setDeliveryError(true);
     } finally {
       setSubmitting(false);
     }
@@ -307,6 +305,12 @@ export function Contact() {
               </button>
             </div>
 
+            {deliveryError && (
+              <p role="alert" className={styles.errorText}>
+                Your message could not be sent. Try again or{" "}
+                <a href={contactRows[0].href}>email me directly</a>.
+              </p>
+            )}
             {validated && (
               <div role="status" className={styles.statusMessage}>
                 Thanks — your message has been sent successfully. I'll get back
